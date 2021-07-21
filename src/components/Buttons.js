@@ -41,7 +41,7 @@ function Buttons(prop) {
 
     }
     return (
-       <button onClick={trigger}>{prop.note}</button>
+       <button onClick={trigger} className={prop.buttonClass}>{prop.note}</button>
     )
 }
 
