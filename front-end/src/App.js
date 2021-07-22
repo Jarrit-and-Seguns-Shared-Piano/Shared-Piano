@@ -1,6 +1,7 @@
 import './App.css';
 import io from 'socket.io-client'
 import Piano from './components/Piano';
+import Xylophone from './components/xylophone';
 import React from "react"
 import * as Tone from 'tone'
 
@@ -25,6 +26,7 @@ function App() {
   return (
     <div className="App">
        <Piano/> 
+       {/* <Xylophone/> */}
     </div>
   );
 }
