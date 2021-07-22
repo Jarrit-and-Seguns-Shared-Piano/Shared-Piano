@@ -16,8 +16,9 @@ function App() {
         urls: {
             A1: body
         },
-        // baseUrl: "https://tonejs.github.io/audio/casio/",
         onload: () => {
+          console.log('sound')
+           sampler.volume.value = -12;
             sampler.triggerAttackRelease( "A1", 1);
         }
     }).toDestination();
@@ -25,8 +26,8 @@ function App() {
 
   return (
     <div className="App">
-       <Piano/> 
-       {/* <Xylophone/> */}
+       {/* <Piano/>  */}
+       <Xylophone/>
     </div>
   );
 }
