@@ -1,7 +1,8 @@
 import * as Tone from 'tone'
 
 function Buttons(prop) {
-    const trigger = () => {
+    const trigger = (e) => {
+        console.log(e)
         // const pianoSamples = new Tone.ToneAudioBuffers({
         //     A1: sound.B1,
         //     A2: sound.A2,
