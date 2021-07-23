@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
 # Shared-Piano
 
 bass - Karoryfer bassoon - VSO2 cello - Freesound - 12408__flcellogrl__real-cello-notes contrabass - VSO2 flute - VSO2 french horn - VSO2 guitar ac - Iowa guitar el - Karoryfer guitar ny - Freesound - 11573__quartertone__classicalguitar-multisampled harmonium - Freesound - 330410__donyaquick__harmonium-samples-all-keys-and-drones harp - VSO2 organ - VSO2 piano - VSO2 sax - Karoryfer trombone - VSO2 trumpet - VSO2 tuba - VSO2 violin - VSO2 xylophone - VSO2
