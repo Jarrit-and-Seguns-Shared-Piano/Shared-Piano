@@ -17,6 +17,7 @@ function App() {
         },
         // baseUrl: "https://tonejs.github.io/audio/casio/",
         onload: () => {
+          console.log('here')
             sampler.triggerAttackRelease( "A1", 1);
         }
     }).toDestination();

@@ -13,7 +13,7 @@ io.on('connection', socket => {
 io.on('connection', (socket) => {
     socket.on('play sound', (body) => {
     console.log(body)
-        io.emit('play sound', body)
+        socket.broadcast.emit('play sound', body)
     })
 })
 

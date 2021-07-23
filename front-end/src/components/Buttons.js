@@ -1,4 +1,4 @@
-// import * as Tone from 'tone'
+import * as Tone from 'tone'
 // import io from 'socket.io-client'
 import { socket } from '../App'
 
@@ -27,16 +27,16 @@ function Buttons(prop) {
           
         //         player.start(now,0,now + 0.5);
         // });
-        // const sampler = new Tone.Sampler({
+        const sampler = new Tone.Sampler({
             
-        //     urls: {
-        //         A1: prop.sound
-        //     },
-        //     // baseUrl: "https://tonejs.github.io/audio/casio/",
-        //     onload: () => {
-        //         sampler.triggerAttackRelease( "A1", 1);
-        //     }
-        // }).toDestination();
+            urls: {
+                A1: prop.sound
+            },
+            // baseUrl: "https://tonejs.github.io/audio/casio/",
+            onload: () => {
+                sampler.triggerAttackRelease( "A1", 1);
+            }
+        }).toDestination();
         // const player = new Tone.Player(prop.sound).toDestination();
         // player.buffer = player
         //  player.autostart = true;
