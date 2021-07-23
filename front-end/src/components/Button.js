@@ -1,7 +1,7 @@
 import * as Tone from 'tone'
-import { socket } from '../App'
+import socket from '../socket'
 
-function Buttons(prop) {
+function Button(prop) {
     
 
     const trigger = () => {
@@ -22,4 +22,4 @@ function Buttons(prop) {
     )
 }
 
-export default Buttons
+export default Button
