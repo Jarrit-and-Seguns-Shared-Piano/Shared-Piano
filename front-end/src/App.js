@@ -2,8 +2,14 @@ import './App.css';
 import io from 'socket.io-client'
 import Piano from './components/Piano';
 import Xylophone from './components/xylophone';
+import DrumMachine from './components/drumMachine';
+import GuitarAcoustic from './components/guitarAcoustic';
+import Flute from './components/flute';
 import React from "react"
 import * as Tone from 'tone'
+
+
+
 
 export const socket = io.connect('/')
 
@@ -27,7 +33,10 @@ function App() {
   return (
     <div className="App">
        {/* <Piano/>  */} 
-       <Xylophone/>
+       {/* <Xylophone/> */}
+       {/* <DrumMachine/> */}
+       {/* <GuitarAcoustic/> */}
+       {/* <Flute/> */}
     </div>
   );
 }
