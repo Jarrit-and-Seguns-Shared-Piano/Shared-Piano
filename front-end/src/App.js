@@ -1,6 +1,7 @@
 import './App.css';
 import io from 'socket.io-client'
 import Piano from './components/Piano';
+import Xylophone from './components/xylophone';
 import React from "react"
 import * as Tone from 'tone'
 
@@ -15,9 +16,9 @@ function App() {
         urls: {
             A1: body
         },
-        // baseUrl: "https://tonejs.github.io/audio/casio/",
         onload: () => {
-          console.log('here')
+          console.log('sound')
+           sampler.volume.value = -12;
             sampler.triggerAttackRelease( "A1", 1);
         }
     }).toDestination();
@@ -25,7 +26,8 @@ function App() {
 
   return (
     <div className="App">
-       <Piano/> 
+       {/* <Piano/>  */}
+       <Xylophone/>
     </div>
   );
 }
