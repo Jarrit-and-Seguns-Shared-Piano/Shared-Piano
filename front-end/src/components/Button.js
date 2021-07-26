@@ -1,10 +1,12 @@
 import * as Tone from 'tone'
 import socket from '../socket'
-// import  { useEffect } from "react"
+import  { useContext } from "react"
+import SharedPiano from '../context/SharedPianoContext'
 
 function Button(prop) {
-    
+    const {volume} = useContext(SharedPiano) 
 
+    
     const trigger = () => {
         socket.emit('play sound', prop.sound)
 
@@ -13,17 +15,22 @@ function Button(prop) {
                 A1: prop.sound
             },
             onload: () => {
-                // console.log('sender')
-                sampler.volume.value = -12;
-                sampler.triggerAttackRelease( "A1", 1);
+                // console.log(release)
+                const now = Tone.now()
+                sampler.volume.value = volume;
+             
+                    sampler.triggerAttack( "A1", now)
+                    sampler.triggerRelease( "A1", now + 1)
+                
+              
             }
         }).toDestination();
         
     }
-
+  
 
     return (
-       <button onClick={trigger} className={prop.buttonClass}>{prop.note}</button>
+       <button onMouseDown={() => trigger()} onMouseUp={() => trigger()} className={prop.buttonClass}>{prop.note}</button>
     )
 }
 

@@ -9,11 +9,14 @@ import * as Tone from 'tone'
 import socket from '../socket'
 import keyboard from '../keyboard/keyboard'
 import Dropdown from './dropDown';
+import  { useContext } from "react"
+import SharedPiano from '../context/SharedPianoContext'
 
 function PianoPage(){
   const [name, setName] = useState('')
   const [room, setRoom] = useState('')
   const [instrument,setInstrument] = useState('piano')
+  const {volume,setVolume} = useContext(SharedPiano)
 
   useEffect(() => {
     const data = new URLSearchParams(window.location.search)
@@ -30,7 +33,7 @@ function PianoPage(){
       socket.off()
     }
 
-  }, [window.location.search])
+  }, [])
 
   useEffect(() => {
     socket.on('play sound', function(body) {
@@ -39,12 +42,12 @@ function PianoPage(){
               A1: body
           },
           onload: () => {
-              sampler.volume.value = -12;
+              sampler.volume.value = volume;
               sampler.triggerAttackRelease( "A1", 1);
           }
       }).toDestination();
     })
-  }, [])
+  }, [volume])
 
   useEffect(() => {
     document.addEventListener('keydown', (e) => {
@@ -61,6 +64,8 @@ function PianoPage(){
     <Flute/> : 
     <Xylophone/>
   }
+    <label htmlFor="volume">Volume: </label>
+    <input type="range" id="volume" name="vol" min="-60" max="5" onChange={e => setVolume(e.target.value)} value={volume}></input>
     <Dropdown value={instrument} change={setInstrument}/>
   </div>
   )

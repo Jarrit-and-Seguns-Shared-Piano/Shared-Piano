@@ -14,7 +14,7 @@ io.on('connection', socket => {
         if(error) return callback(error)
         socket.join(user.room)
     })
-
+  
     socket.on('play sound', (body) => {
         const user = getUser(socket.id)
         console.log(user)
