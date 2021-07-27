@@ -1,6 +1,8 @@
 import piano from '../samples/pianoSample'
 import Button from './Button';
 
+console.log(Object.keys(piano).length / 12  )
+
 function Piano() {
     return (
         <div className="board">
