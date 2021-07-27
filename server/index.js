@@ -13,12 +13,20 @@ io.on('connection', socket => {
         const { error, user } = addUser({id:socket.id, name, room})
         if(error) return callback(error)
         socket.join(user.room)
+
+        io.to(user.room).emit('get users', {room: user.room, users: getUsersInRoom(user.room)})
     })
 
     socket.on('play sound', (body) => {
         const user = getUser(socket.id)
-        console.log(user)
         socket.broadcast.to(user.room).emit('play sound', body)
+    })
+
+    socket.on('leave room', () => {
+        const user = getUser(socket.id)
+        removeUser(user.id)
+        io.to(user.room).emit('get users', {room: user.room, users: getUsersInRoom(user.room)})
+        console.log(`${user.name} has left ${user.room}`)
     })
 
     socket.on('disconnect', () => {

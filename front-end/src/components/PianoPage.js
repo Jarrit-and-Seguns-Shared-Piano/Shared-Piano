@@ -9,28 +9,27 @@ import * as Tone from 'tone'
 import socket from '../socket'
 import keyboard from '../keyboard/keyboard'
 import Dropdown from './dropDown';
+import { Link } from 'react-router-dom'
 
 function PianoPage(){
   const [name, setName] = useState('')
   const [room, setRoom] = useState('')
+  const [users, setUsers] = useState([])
   const [instrument,setInstrument] = useState('piano')
 
   useEffect(() => {
     const data = new URLSearchParams(window.location.search)
     const {name, room} = Object.fromEntries(data.entries())
-    console.log(name, room)
 
     setName(name)
     setRoom(room)
-
+    
     socket.emit('join', {name, room})
-
+    socket.emit('get users')
     return () => {
-      socket.emit('disconnect')
-      socket.off()
+      socket.emit('leave room')
     }
-
-  }, [window.location.search])
+  }, [])
 
   useEffect(() => {
     socket.on('play sound', function(body) {
@@ -47,13 +46,22 @@ function PianoPage(){
   }, [])
 
   useEffect(() => {
-    document.addEventListener('keydown', (e) => {
-      keyboard(e.key)
+    socket.on('get users', ({users}) => {
+      setUsers(users)
     })
-  },[])
+  }, [])
+
+  // useEffect(() => {
+  //   document.addEventListener('keydown', (e) => {
+  //     keyboard(e.key)
+  //   })
+  // },[])
 
   return (
-  <div className="App">
+  <div>
+    <div>
+    {users.map((users, i) => <li>{users.name}</li>)}
+    </div>
   {instrument === 'piano' ?
     <Piano/> : instrument === 'guitarAcoustic' ?
     <GuitarAcoustic/> : instrument === 'drumMachine' ?
@@ -62,6 +70,9 @@ function PianoPage(){
     <Xylophone/>
   }
     <Dropdown value={instrument} change={setInstrument}/>
+    <Link to={'/'}>
+      <button type='submit'>Leave Room</button>
+    </Link>
   </div>
   )
 }
