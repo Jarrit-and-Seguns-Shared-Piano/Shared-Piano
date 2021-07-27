@@ -31,11 +31,8 @@
 .board {
   display: flex;
 }
-.octave1 {
+.octave {
   display: flex;
   justify-content: center;
 }
-.octave2 {
-  display: flex;
-  justify-content: center;
-}
+

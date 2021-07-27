@@ -37,11 +37,14 @@ import Gs2 from './guitar-acoustic/Gs2.mp3'
 import Gs3 from './guitar-acoustic/Gs3.mp3'
 
 const guitarAcoustic = {
-    A1,A2,A3,As1,As2,As3,
-    B1,B2,B3,C2,C3,C4,Cs2,
-    Cs3,Cs4,D1,D2,D3,D4,Ds1,
-    Ds2,Ds3,E1,E2,E3,F1,F2,
-    F3,Fs1,Fs2,Fs3,G1,G2,G3,
-    Gs1,Gs2,Gs3
+    D1,Ds1,E1,F1,Fs1,
+    G1,Gs1,A1,As1,B1,
+    C2,Cs2,D2,Ds2,E2,
+    F2,Fs2,G2,Gs2,A2,
+    As2,B2,C3,Cs3,D3,
+    Ds3,E3,F3,Fs3,G3,
+    Gs3,A3,As3,B3,C4,
+    Cs4,D4,
+
 }
 export default guitarAcoustic

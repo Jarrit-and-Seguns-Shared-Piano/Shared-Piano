@@ -1,5 +1,6 @@
 
 function keypress(key) {  
+    var mousedown = new Event('mousedown');
     const octave = document.getElementsByClassName('octave2')
         key = key.toLowerCase()
         if(key === 'a') {

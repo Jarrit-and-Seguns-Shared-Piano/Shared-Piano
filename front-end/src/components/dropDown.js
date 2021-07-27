@@ -12,6 +12,8 @@ function dropDown(prop) {
                 <option value="drumMachine">DrumMachine</option>
                 <option value="flute">Flute</option>
                 <option value="xylophone">Xylophone</option>
+                <option value="violin">Violin</option>
+                <option value="organ">Organ</option>
             </select>
         </div>
     )

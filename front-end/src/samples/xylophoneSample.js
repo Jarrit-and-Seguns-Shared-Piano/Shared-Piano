@@ -24,13 +24,12 @@ import G5 from './xylophone/G5.mp3'
 import G6 from './xylophone/G6.mp3'
 
 const xylophone = {
-    C4,C5,C6,
-    C7,G3,G4,
-    G5,G6,A3,
-    A4,B3,Bs3,
-    C3,Cs3,Cs4,
-    D3,D4,Ds3,
-    E3,E4,Es3,
-    F3,F4,Gs4
+    C3,Cs3,D3,Ds3,
+    E3,Es3,F3,G3,
+    A3,B3,Bs3,C4,
+    Cs4,D4,E4,F4, 
+    G4,Gs4,A4,C5,
+    G5,C6,G6,C7    
 }
 export default xylophone
+//CDEFGAB
