@@ -7,7 +7,6 @@ import Flute from './flute';
 import { useEffect,useState } from "react"
 import * as Tone from 'tone'
 import socket from '../socket'
-import keyboard from '../keyboard/keyboard'
 import Dropdown from './dropDown';
 import { Link } from 'react-router-dom'
 import  { useContext } from "react"

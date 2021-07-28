@@ -4,20 +4,21 @@ const server = require('http').Server(app);
 const io = require('socket.io')(server);
 const PORT = process.env.PORT || 8000
 
-const { addUser, removeUser, getUser, getUsersInRoom} = require( './users.js')
+const { addUser, removeUser, getUser, getUsersInRoom, getNames, getRooms} = require( './users.js')
 
 io.on('connection', socket => {
     console.log('a user has connected')
 
-    socket.on('join', ({name, room}, callback) => {
+    socket.on('join', ({name, room}) => {
+        console.log("here")
         const { error, user } = addUser({id:socket.id, name, room})
-        if(error) return callback(error)
         socket.join(user.room)
 
         io.to(user.room).emit('get users', {room: user.room, users: getUsersInRoom(user.room)})
     })
-  
+
     socket.on('play sound', (body) => {
+        console.log("test")
         const user = getUser(socket.id)
         socket.broadcast.to(user.room).emit('play sound', body)
     })
@@ -27,6 +28,12 @@ io.on('connection', socket => {
         removeUser(user.id)
         io.to(user.room).emit('get users', {room: user.room, users: getUsersInRoom(user.room)})
         console.log(`${user.name} has left ${user.room}`)
+    })
+
+    socket.on('check names', ({ name, room }) => {
+        const foundName = getNames(name)
+        const foundRoom = getRooms(room)
+        socket.emit('check names', { foundName, foundRoom })
     })
 
     socket.on('disconnect', () => {

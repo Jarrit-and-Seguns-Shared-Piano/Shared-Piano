@@ -1,6 +1,6 @@
 import * as Tone from 'tone'
 import socket from '../socket'
-import  { useContext} from "react"
+import  { useContext, useEffect} from "react"
 import SharedPiano from '../context/SharedPianoContext'
 
 
@@ -28,7 +28,10 @@ function Button(prop) {
         }).toDestination();
         
     }
-  trigger()
+
+    // useEffect(() => {
+    //    trigger() 
+    // }, [])
 
     return (
        <button onMouseDown={() => sampler.triggerAttack("A1", Tone.now())} onMouseUp={() => sampler.triggerRelease("A1",Tone.now() + 0.3)} className={prop.buttonClass}>{prop.note}</button>
