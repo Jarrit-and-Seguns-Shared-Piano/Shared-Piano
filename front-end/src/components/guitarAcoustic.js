@@ -9,8 +9,8 @@ function GuitarAcoustic() {
     const octavesObj = octaveCalc(guitar)
     return (
         <div className="board">
-            {Object.keys(octavesObj).map(keys => {
-               return <OctaveRender octave={keys} sound={octavesObj[keys]} name='guitar' key={keys}/>
+            {Object.keys(octavesObj.octa).map(keys => {
+               return <OctaveRender keyOct={octavesObj} octave={keys} sound={octavesObj.octa[keys]} note={octavesObj.octakey[keys]} name='guitar' key={keys}/>
             })}
         </div>
     )

@@ -14,21 +14,26 @@ import SharedPiano from '../context/SharedPianoContext'
 import OctaveDrop from './OctaveDrop'; 
 import Violin from './Violin';
 import Organ from './Organ';
+import Users from './Users';
 
 
 function PianoPage(){
-  const [name, setName] = useState('')
-  const [room, setRoom] = useState('')
-  const [users, setUsers] = useState([])
+  console.log('hello')
+  // const [name, setName] = useState('')
+  // const [room, setRoom] = useState('')
+  // const [users, setUsers] = useState([])
   const [instrument,setInstrument] = useState('piano')
-  const {volume,setVolume,setOctave,octave} = useContext(SharedPiano)
+  const {volume,setVolume,setOctave,octave,loading} = useContext(SharedPiano)
+  // useEffect(() => {
+   
+  // },[])
 
   useEffect(() => {
     const data = new URLSearchParams(window.location.search)
     const {name, room} = Object.fromEntries(data.entries())
 
-    setName(name)
-    setRoom(room)
+    // setName(name)
+    // setRoom(room)
     
     socket.emit('join', {name, room})
     socket.emit('get users')
@@ -45,31 +50,25 @@ function PianoPage(){
           },
           onload: () => {
               sampler.volume.value = volume;
-              sampler.triggerAttackRelease( "A1", 1);
+              sampler.triggerAttackRelease( "A1", 0.5);
           }
       }).toDestination();
     })
   }, [volume])
-
-  useEffect(() => {
-    socket.on('get users', ({users}) => {
-      setUsers(users)
-    })
-  }, [])
-
+ 
   // useEffect(() => {
-  //   document.addEventListener('keydown', (e) => {
-  //     keyboard(e.key)
+  //   socket.on('get users', ({users}) => {
+  //     setUsers(users)
   //   })
-  // },[])
+  // }, [])
+
 
   return (
   <div>
-    <div>
-    {users.map((users, i) => <li>{users.name}</li>)}
-    </div>
+    <Users/>
+    <div id="loading" style={{ backgroundColor: 'red'}}>
   {instrument === 'piano' ?
-    <Piano/> : instrument === 'guitarAcoustic' ?
+    <Piano />: instrument === 'guitarAcoustic' ?
     <GuitarAcoustic/> : instrument === 'drumMachine' ?
     <DrumMachine/> : instrument === 'flute' ?
     <Flute/> : instrument === 'xylophone' ?
@@ -77,13 +76,15 @@ function PianoPage(){
     <Violin/> :
     <Organ/>
   }
+  </div>
     <label htmlFor="volume">Volume: </label>
-    <input type="range" id="volume" name="vol" min="-60" max="5" onChange={e => setVolume(e.target.value)} value={volume}></input>
-    <Dropdown value={instrument} change={setInstrument}/>
+    <input type="range" id="volume" name="vol" min="-60" max="5" onChange={e => {loading();setVolume(e.target.value)}} value={volume}></input>
+    <Dropdown value={instrument} change={setInstrument} load={loading}/>
     <Link to={'/'}>
       <button type='submit'>Leave Room</button>
     </Link>
-    <OctaveDrop value={octave} change={setOctave}/>
+    <OctaveDrop value={octave} change={setOctave} load={loading}/>
+    
   </div>
   )
 }

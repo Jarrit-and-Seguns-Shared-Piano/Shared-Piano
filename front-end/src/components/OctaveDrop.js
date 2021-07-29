@@ -1,6 +1,7 @@
 
 function OctaveDrop(prop) {
     function changeOcta(event) {
+        prop.load()
         prop.change(event.target.value)
      }
      return (

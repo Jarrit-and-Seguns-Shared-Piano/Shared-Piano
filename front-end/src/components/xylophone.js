@@ -9,8 +9,8 @@ function Xylophone() {
     const octavesObj = octaveCalc(xylophone)
     return (
         <div className="board">
-            {Object.keys(octavesObj).map(keys => {
-               return <OctaveRender octave={keys} sound={octavesObj[keys]} name='piano' key={keys}/>
+            {Object.keys(octavesObj.octa).map(keys => {
+               return <OctaveRender keyOct={octavesObj} octave={keys} note={octavesObj.octakey[keys]} sound={octavesObj.octa[keys]} name='piano' key={keys}/>
             })}
         </div>
     )

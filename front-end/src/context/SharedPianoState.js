@@ -1,50 +1,58 @@
-import { useState } from 'react'
+import { useState,useEffect } from 'react'
 import SharedPianoContext from './SharedPianoContext'
-import * as Tone from 'tone'
+
 
 function SharedPiano(props) {
     const [volume,setVolume] = useState(-12)
-
-    let sampler = new Tone.Sampler({
-        urls: {
-            A1: 'https://tonejs.github.io/audio/berklee/gong_1.mp3'
-        },
-        onload: () => {
-
-            sampler.volume.value = volume;
-         
-                // sampler.triggerAttack( "A1", now)
-                // sampler.triggerRelease( "A1", now + 1)
-        }
-    }).toDestination();
-    
      const [octave,setOctave] = useState(2)
+
+    
+        function loading() {
+          const loading = document.getElementById('loading')
+         loading.firstChild.style.opacity = 0;
+         loading.firstChild.style['pointer-events'] = 'none'
+         setTimeout(() => {
+          loading.firstChild.style.opacity = 1;
+          loading.firstChild.style['pointer-events'] = 'all'
+       }, 2000);
+      }
+      
+
+
      const octaveCalc = (soundObj) => {
         let octaves = Math.floor(Object.keys(soundObj).length / 12)
         if(octave - 1 <= octaves) {
             octaves = octave - 1
         }
         const keys = Object.values(soundObj)
-        const octavesObj = {}
+        const keyNote = Object.keys(soundObj)
+        const octavesObj = {
+            octa: {},
+            octakey: {}
+        }
         for(let i = 0 ; i <= octaves; i++) {
-            octavesObj[`octave ${i}`] = []
+            octavesObj.octa[`octave ${i}`] = []
+            octavesObj.octakey[`octave ${i}`] = []
             if(i === octaves && keys.length < 12) {
-                octavesObj[`octave ${i}`] = keys
+                octavesObj.octa[`octave ${i}`] = keys
+                octavesObj.octakey[`octave ${i}`] = keyNote
             }else {
                for(let y = 0; y < 12 ;y++) {
-                    octavesObj[`octave ${i}`].push(keys.shift())
+                    octavesObj.octa[`octave ${i}`].push(keys.shift())
+                    octavesObj.octakey[`octave ${i}`].push(keyNote.shift())
                 }
             }        
         }
+        // console.log(octavesObj,'here')
         return octavesObj;
      }
      const value = {
          volume,
          setVolume,
-         sampler,
          octaveCalc,
          octave,
-         setOctave
+         setOctave,
+         loading
      }
 
   

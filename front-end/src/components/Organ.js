@@ -8,8 +8,8 @@ function Organ() {
     const octavesObj = octaveCalc(organ)
     return (
         <div className="board">
-            {Object.keys(octavesObj).map(keys => {
-               return <OctaveRender octave={keys} sound={octavesObj[keys]} name='organ' key={keys}/>
+            {Object.keys(octavesObj.octa).map(keys => {
+               return <OctaveRender keyOct={octavesObj} octave={keys} note={octavesObj.octakey[keys]} sound={octavesObj.octa[keys]} name='organ' key={keys}/>
             })}
         </div>
     )

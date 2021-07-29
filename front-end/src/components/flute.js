@@ -8,8 +8,8 @@ function Flutes() {
     const octavesObj = octaveCalc(flute)
     return (
         <div className="board">
-            {Object.keys(octavesObj).map(keys => {
-               return <OctaveRender octave={keys} sound={octavesObj[keys]} name='flute' key={keys}/>
+            {Object.keys(octavesObj.octa).map(keys => {
+               return <OctaveRender keyOct={octavesObj} octave={keys} sound={octavesObj.octa[keys]} note={octavesObj.octakey[keys]} name='flute' key={keys}/>
             })}
         </div>
     )

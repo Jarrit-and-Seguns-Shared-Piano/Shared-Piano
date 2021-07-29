@@ -2,6 +2,8 @@
 
 function dropDown(prop) {
     function changeInst(event) {
+        console.log('notd')
+        prop.load()
        prop.change(event.target.value)
     }
     return (
