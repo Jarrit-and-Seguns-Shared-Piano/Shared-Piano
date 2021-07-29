@@ -11,3 +11,42 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+
+.team_pictures {
+  height: 100%;
+  box-shadow: px 10px 10px;
+  border-radius: 45px;
+  margin-bottom: 20px;
+}
+
+#heading{
+  display: flex;
+  height: 500px;
+  width: 80%;
+  flex-direction: row;
+  align-items: center;
+}
+
+#home_page-inputs{
+  margin-top: 70px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#title{
+  width:80%
+}
+
+#text_container{
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.profile {
+  height: 75%;
+  margin-bottom: 200px;
+  width: fit-content;
+}

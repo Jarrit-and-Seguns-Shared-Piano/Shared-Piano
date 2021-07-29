@@ -1,6 +1,8 @@
 import React, {useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import socket from '../socket'
+import Form from 'react-bootstrap/Form'
+import Button from 'react-bootstrap/Button'
 
 function HomePage(){
     const [name, setName] = useState('')
@@ -22,16 +24,30 @@ function HomePage(){
     }, [])
 
     return (
-        <div>
-            <div>
-                <input placeholder='Name' type='text' onChange={(event) => setName(event.target.value)}/>  
+        <div id="heading">
+            <div className="profile">
+                <img className="team_pictures" src="/Jarrit.png"/>
+                <h3>Jarrit Alicea</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
             </div>
-            <div>
-                <input placeholder='Room' type='text' onChange={(event) => setRoom(event.target.value)}/>   
+            <div id="text_container">
+                <div id="title">
+                    <h1>Keyboard Hero</h1>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                </div>
+                        <Form.Group id="home_page-inputs">
+                        <Form.Control placeholder="User name" type='email' style={{margin:"10px"}} onChange={(event) => setName(event.target.value)}/>  
+                        <Form.Control placeholder='Room' type='text' onChange={(event) => setRoom(event.target.value)}/>   
+                    <Link onClick={event => (!name || !room || dupName) ? event.preventDefault() : null} to={`piano?name=${name}&room=${room}`}>
+                        <Button variant="primary" type='submit' style={{margin:"10px"}}>Join Room</Button>
+                    </Link>
+                    </Form.Group>
             </div>
-            <Link onClick={event => (!name || !room || dupName) ? event.preventDefault() : null} to={`piano?name=${name}&room=${room}`}>
-                <button type='submit'>Join Room</button>
-            </Link>
+            <div className="profile">
+                <img className="team_pictures" src="/Segun.jpg"/>
+                <h3>Segun Subair</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            </div>
         </div>
     )
 }
