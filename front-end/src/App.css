@@ -35,4 +35,14 @@
   display: flex;
   justify-content: center;
 }
+.features {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.options {
+  display: flex;
+  justify-content: space-between;
+}
 

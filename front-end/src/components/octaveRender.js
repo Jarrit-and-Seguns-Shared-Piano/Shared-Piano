@@ -7,7 +7,7 @@ const octavePos = ['flat','sharp','flat','sharp','flat','flat','sharp','flat','s
 
 
 function OctaveRender({octave,sound,name,note,keyOct}) {
-    let {volume} = useContext(SharedPiano) 
+    let {volume,keymap,setKeyMap} = useContext(SharedPiano) 
     // console.log(loading)
     const notes = {}
     sound.forEach((keyNote,i) => {
@@ -18,17 +18,23 @@ function OctaveRender({octave,sound,name,note,keyOct}) {
     const sampler = sample(notes,volume)
 
     useEffect(() => {
-        const octaveKey = keyOct.octakey['octave 0']
+        if(Number(keymap[keymap.length - 1]) + 1 > Object.keys(keyOct.octa).length) {
+            alert('keyboard octave too high for selected instrument')
+            keymap = 'octave 0'
+            // setKeyMap('octave 0')
+        }
+        // console.log(octaveNub,Number(keymap[keymap.length - 1]) + 1)
+        const octaveKey = keyOct.octakey[keymap]
         const notes = []
         octaveKey.forEach(keyword => {
             let string = keyword.replace('.','')
             notes.push(string.replace('s','#'))
         })
         const down = (e) => {
-            keyboard(e,sampler,notes,sound)
+            keyboard(e,sampler,notes,sound,keymap)
             }
         const up = (e) => {
-            keyboard(e,sampler,notes,sound)
+            keyboard(e,sampler,notes,sound,keymap)
             }
         document.addEventListener('keydown', down,false)
         document.addEventListener('keyup', up,false)
@@ -36,7 +42,7 @@ function OctaveRender({octave,sound,name,note,keyOct}) {
             document.removeEventListener('keydown',down);
             document.removeEventListener('keyup',up);
         }
-    },[volume])
+    },[volume,keymap])
 
     let counter = 0
         return (

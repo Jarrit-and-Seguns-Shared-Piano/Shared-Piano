@@ -15,6 +15,7 @@ import OctaveDrop from './OctaveDrop';
 import Violin from './Violin';
 import Organ from './Organ';
 import Users from './Users';
+import KeyMap from './KeyMap';
 
 
 function PianoPage(){
@@ -64,7 +65,7 @@ function PianoPage(){
 
 
   return (
-  <div>
+  <div className="features">
     <Users/>
     <div id="loading" style={{ backgroundColor: 'red'}}>
   {instrument === 'piano' ?
@@ -77,14 +78,18 @@ function PianoPage(){
     <Organ/>
   }
   </div>
-    <label htmlFor="volume">Volume: </label>
-    <input type="range" id="volume" name="vol" min="-60" max="5" onChange={e => {loading();setVolume(e.target.value)}} value={volume}></input>
-    <Dropdown value={instrument} change={setInstrument} load={loading}/>
-    <Link to={'/'}>
-      <button type='submit'>Leave Room</button>
-    </Link>
-    <OctaveDrop value={octave} change={setOctave} load={loading}/>
-    
+  <div className="options">
+    <div>
+      <label htmlFor="volume">Volume: </label>
+      <input type="range" id="volume" name="vol" min="-60" max="5" onChange={e => {loading();setVolume(e.target.value)}} value={volume}></input>
+    </div>
+      <Dropdown value={instrument} change={setInstrument} load={loading}/>
+      <Link to={'/'}>
+        <button type='submit'>Leave Room</button>
+      </Link>
+      <OctaveDrop value={octave} change={setOctave} load={loading}/>
+      <KeyMap/>
+    </div>
   </div>
   )
 }

@@ -6,6 +6,10 @@ import flute from '../samples/fluteSample'
 function Flutes() {
     let {octaveCalc} = useContext(SharedPiano) 
     const octavesObj = octaveCalc(flute)
+    // console.log(Object.keys(octavesObj.octa).length,Number(keymap[keymap.length - 1]) + 1)
+    // if(Number(keymap[keymap.length - 1]) + 1 > Object.keys(octavesObj.octa).length) {
+    //     setKeyMap('octave 0')
+    // }
     return (
         <div className="board">
             {Object.keys(octavesObj.octa).map(keys => {

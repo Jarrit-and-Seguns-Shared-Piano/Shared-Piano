@@ -3,9 +3,9 @@ import SharedPianoContext from './SharedPianoContext'
 
 
 function SharedPiano(props) {
-    const [volume,setVolume] = useState(-12)
+     const [volume,setVolume] = useState(-12)
      const [octave,setOctave] = useState(2)
-
+     const [currentMax,setCurrentMax] = useState(0)
     
         function loading() {
           const loading = document.getElementById('loading')
@@ -46,13 +46,18 @@ function SharedPiano(props) {
         // console.log(octavesObj,'here')
         return octavesObj;
      }
+     const [keymap,setKeyMap] = useState('octave 0')
      const value = {
          volume,
          setVolume,
          octaveCalc,
          octave,
          setOctave,
-         loading
+         loading,
+         keymap,
+         setKeyMap,
+         currentMax,
+         setCurrentMax
      }
 
   
