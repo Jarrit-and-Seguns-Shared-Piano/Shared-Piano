@@ -6,16 +6,17 @@ import Button from 'react-bootstrap/Button'
 
 function HomePage(){
     const [name, setName] = useState('')
+    const [joinName, setJoinName] = useState('')
     const [room, setRoom] = useState('')
     const [dupName, setDupName] = useState(false)
 
     useEffect(() => {
-        socket.emit('check names', { name, room })
-    }, [name, room])
+        socket.emit('check names', { joinName, room })
+    }, [joinName, room])
 
     useEffect(() => {
-        socket.on('check names', function({ foundName, foundRoom}){
-            if(foundName && foundRoom){
+        socket.on('check names', function({ foundName, foundRoom }){
+            if(!foundName && foundRoom){
                 setDupName(true)
             } else {
                 setDupName(false)
@@ -35,10 +36,16 @@ function HomePage(){
                     <h1>Keyboard Hero</h1>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
                 </div>
-                        <Form.Group id="home_page-inputs">
+                    <Form.Group id="home_page-inputs">
                         <Form.Control placeholder="User name" type='email' style={{margin:"10px"}} onChange={(event) => setName(event.target.value)}/>  
-                        <Form.Control placeholder='Room' type='text' onChange={(event) => setRoom(event.target.value)}/>   
-                    <Link onClick={event => (!name || !room || dupName) ? event.preventDefault() : null} to={`piano?name=${name}&room=${room}`}>
+                    <Link onClick={event => (!name) ? event.preventDefault() : null} to={{pathname: '/piano', state: {name: name}}}>
+                        <Button variant="primary" type='submit' style={{margin:"10px"}}>Make Room</Button>
+                    </Link>
+                    </Form.Group>
+                    <Form.Group id="home_page-inputs">
+                        <Form.Control placeholder="User name" type='email' style={{margin:"10px"}} onChange={(event) => setJoinName(event.target.value)}/>
+                        <Form.Control placeholder="Room code" type='email' style={{margin:"10px"}} onChange={(event) => setRoom(event.target.value)}/>  
+                    <Link onClick={event => (!joinName || !room || !dupName) ? event.preventDefault() : null} to={{pathname: '/piano', state: {name: joinName, room: room}}}>
                         <Button variant="primary" type='submit' style={{margin:"10px"}}>Join Room</Button>
                     </Link>
                     </Form.Group>

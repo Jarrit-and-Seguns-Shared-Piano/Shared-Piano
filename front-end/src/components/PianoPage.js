@@ -16,32 +16,12 @@ import Violin from './Violin';
 import Organ from './Organ';
 import Users from './Users';
 import KeyMap from './KeyMap';
-
+import Hash from './Hash'
 
 function PianoPage(){
   console.log('hello')
-  // const [name, setName] = useState('')
-  // const [room, setRoom] = useState('')
-  // const [users, setUsers] = useState([])
   const [instrument,setInstrument] = useState('piano')
   const {volume,setVolume,setOctave,octave,loading} = useContext(SharedPiano)
-  // useEffect(() => {
-   
-  // },[])
-
-  useEffect(() => {
-    const data = new URLSearchParams(window.location.search)
-    const {name, room} = Object.fromEntries(data.entries())
-
-    // setName(name)
-    // setRoom(room)
-    
-    socket.emit('join', {name, room})
-    socket.emit('get users')
-    return () => {
-      socket.emit('leave room')
-    }
-  }, [])
 
   useEffect(() => {
     socket.on('play sound', function(body) {
@@ -56,16 +36,10 @@ function PianoPage(){
       }).toDestination();
     })
   }, [volume])
- 
-  // useEffect(() => {
-  //   socket.on('get users', ({users}) => {
-  //     setUsers(users)
-  //   })
-  // }, [])
-
 
   return (
   <div className="features">
+    <Hash/>
     <Users/>
     <div id="loading" style={{ backgroundColor: 'red'}}>
   {instrument === 'piano' ?

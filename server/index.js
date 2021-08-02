@@ -11,7 +11,7 @@ io.on('connection', socket => {
 
     socket.on('join', ({name, room}) => {
         console.log("here")
-        const { error, user } = addUser({id:socket.id, name, room})
+        const { user } = addUser({id:socket.id, name, room})
         socket.join(user.room)
 
         io.to(user.room).emit('get users', {room: user.room, users: getUsersInRoom(user.room)})
@@ -30,8 +30,8 @@ io.on('connection', socket => {
         console.log(`${user.name} has left ${user.room}`)
     })
 
-    socket.on('check names', ({ name, room }) => {
-        const foundName = getNames(name)
+    socket.on('check names', ({ joinName, room }) => {
+        const foundName = getNames(joinName)
         const foundRoom = getRooms(room)
         socket.emit('check names', { foundName, foundRoom })
     })
