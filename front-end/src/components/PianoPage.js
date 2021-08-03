@@ -19,10 +19,9 @@ import KeyMap from './KeyMap';
 import Hash from './Hash'
 
 function PianoPage(){
-  console.log('hello')
   const [instrument,setInstrument] = useState('piano')
   const {volume,setVolume,setOctave,octave,loading} = useContext(SharedPiano)
-
+  
   useEffect(() => {
     socket.on('play sound', function(body) {
       const sampler = new Tone.Sampler({

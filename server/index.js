@@ -4,7 +4,7 @@ const server = require('http').Server(app);
 const io = require('socket.io')(server);
 const PORT = process.env.PORT || 8000
 
-const { addUser, removeUser, getUser, getUsersInRoom, getNames, getRooms} = require( './users.js')
+const { addUser, removeUser, getUser, getUsersInRoom, getNames, getRooms } = require( './users.js')
 
 io.on('connection', socket => {
     console.log('a user has connected')

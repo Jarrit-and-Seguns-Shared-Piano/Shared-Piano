@@ -24,6 +24,17 @@ function HomePage(){
         })
     }, [])
 
+    function Hash(length){
+        let result = '';
+        const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+        const charactersLength = characters.length;
+        for ( var i = 0; i < length; i++ ) {
+            result += characters.charAt(Math.floor(Math.random() * 
+            charactersLength));
+        }
+        return result
+    }
+
     return (
         <div id="heading">
             <div className="profile">
@@ -38,7 +49,7 @@ function HomePage(){
                 </div>
                     <Form.Group id="home_page-inputs">
                         <Form.Control placeholder="User name" type='email' style={{margin:"10px"}} onChange={(event) => setName(event.target.value)}/>  
-                    <Link onClick={event => (!name) ? event.preventDefault() : null} to={{pathname: '/piano', state: {name: name}}}>
+                    <Link onClick={event => (!name) ? event.preventDefault() : null} to={{pathname: '/piano', state: {name: name, room: Hash(15)}}}>
                         <Button variant="primary" type='submit' style={{margin:"10px"}}>Make Room</Button>
                     </Link>
                     </Form.Group>
