@@ -1,12 +1,14 @@
 import * as Tone from 'tone'
 import socket from '../socket'
+// import {update} from './ShowNote'
 
-// import  { useContext, useEffect} from "react"
-// import SharedPiano from '../context/SharedPianoContext'
+import  { useContext} from "react"
+import KeyNote from '../context/KeyNoteContext'
 
 
 
 function Button(prop) {
+    let {setNote} = useContext(KeyNote)
     function hover(e) {
         if(e.type === 'mouseout' && e.target.classList[1] === 'sharp') {
             e.target.style.backgroundColor = 'black'
@@ -28,12 +30,13 @@ function Button(prop) {
         
     }
     const sendSound = () => {
+          setNote(prop.keyNote)
         socket.emit('play sound', prop.sound)
     }
 
 
     return (
-       <button onClick={e => showClick(e,'green')} onMouseOver={hover} onMouseOut={hover} onMouseDown={() =>{ sendSound();prop.sampler.triggerAttack(prop.keyNote, Tone.now())}} onMouseUp={() => prop.sampler.triggerRelease(prop.keyNote,Tone.now() + 0.3)} className={prop.buttonClass}>{prop.note}</button>
+       <button onClick={e => showClick(e,'green')} onMouseOver={hover} onMouseOut={hover} onMouseDown={() =>{ sendSound();prop.sampler.triggerAttack(prop.keyNote, Tone.now())}} onMouseUp={() => prop.sampler.triggerRelease(prop.keyNote,Tone.now() + 0.3)} className={prop.buttonClass}></button>
     )
 }
 

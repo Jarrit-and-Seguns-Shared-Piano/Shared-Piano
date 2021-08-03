@@ -1,19 +1,31 @@
-import  { useContext,useEffect } from "react"
+import  { useContext } from "react"
 import SharedPiano from '../context/SharedPianoContext'
+import { OverlayTrigger,Tooltip,FloatingLabel,Form} from 'react-bootstrap';
 
-function KeyMap() {
+function KeyMap({load}) {
     let {keymap,setKeyMap,octave} = useContext(SharedPiano) 
     function changeOcta(event) {
-        // prop.load()
+         load()
         if(event.target.selectedIndex < octave) {
             setKeyMap(event.target.value)
         }else {
             alert('cant map to octave not visible')
         }
      }
+     const renderTooltip = (props) => (
+        <Tooltip id="button-tooltip" {...props}>
+           Change keyboard octave mapping
+        </Tooltip>
+      );
      return (
-         <div>
-             <select  value={keymap} onChange={changeOcta}>
+         
+        < >
+       <OverlayTrigger
+          placement="top"
+          delay={{ show: 250, hide: 400 }}
+          overlay={renderTooltip}>
+        <FloatingLabel controlId="floatingSelect" label="Keyboard Map">
+            <Form.Select  size='lg' aria-label="keyboard map to octave" value={keymap} onChange={changeOcta}>
                  <option value="octave 0">1 Octave</option>
                  <option value="octave 1">2 Octave</option>
                  <option value="octave 2">3 Octave</option>
@@ -22,8 +34,10 @@ function KeyMap() {
                  <option value="octave 5">6 Octave</option>
                  <option value="octave 6">7 Octave</option>
                  <option value="octave 7">8 Octave</option>
-             </select>
-         </div>
+            </Form.Select>
+        </FloatingLabel>
+        </OverlayTrigger>
+         </>
      )
 }
 

@@ -47,6 +47,7 @@ function SharedPiano(props) {
         return octavesObj;
      }
      const [keymap,setKeyMap] = useState('octave 0')
+
      const value = {
          volume,
          setVolume,

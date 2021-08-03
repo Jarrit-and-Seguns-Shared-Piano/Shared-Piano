@@ -3,11 +3,13 @@ import sample from './Samples';
 import  { useContext,useEffect } from "react"
 import SharedPiano from '../context/SharedPianoContext'
 import keyboard from '../keyboard/keyboard';
+// import KeyNote from '../context/KeyNoteContext'
 const octavePos = ['flat','sharp','flat','sharp','flat','flat','sharp','flat','sharp','flat','sharp','flat']
 
 
 function OctaveRender({octave,sound,name,note,keyOct}) {
-    let {volume,keymap,setKeyMap} = useContext(SharedPiano) 
+    let {volume,keymap} = useContext(SharedPiano) 
+    // let {setNote} = useContext(KeyNote)
     // console.log(loading)
     const notes = {}
     sound.forEach((keyNote,i) => {
@@ -42,7 +44,7 @@ function OctaveRender({octave,sound,name,note,keyOct}) {
             document.removeEventListener('keydown',down);
             document.removeEventListener('keyup',up);
         }
-    },[volume,keymap])
+    },[volume,keymap,sampler])
 
     let counter = 0
         return (

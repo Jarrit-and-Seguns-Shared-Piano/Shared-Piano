@@ -2,7 +2,7 @@ import React, {useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import socket from '../socket'
 import Form from 'react-bootstrap/Form'
-import Button from 'react-bootstrap/Button'
+import { Button,OverlayTrigger,Tooltip } from 'react-bootstrap';
 
 function HomePage(){
     const [name, setName] = useState('')
@@ -35,6 +35,12 @@ function HomePage(){
         return result
     }
 
+    const renderTooltip = (props) => (
+        <Tooltip id="button-tooltip" {...props}>
+          Click to join room. Duplicate name can't join the same room
+        </Tooltip>
+      );
+
     return (
         <div id="heading">
             <div className="profile">
@@ -56,8 +62,15 @@ function HomePage(){
                     <Form.Group id="home_page-inputs">
                         <Form.Control placeholder="User name" type='email' style={{margin:"10px"}} onChange={(event) => setJoinName(event.target.value)}/>
                         <Form.Control placeholder="Room code" type='email' style={{margin:"10px"}} onChange={(event) => setRoom(event.target.value)}/>  
-                    <Link onClick={event => (!joinName || !room || !dupName) ? event.preventDefault() : null} to={{pathname: '/piano', state: {name: joinName, room: room}}}>
+                    <Link onClick={event => (!joinName || !room || !dupName) ? event.preventDefault() : null} to={{pathname: '/piano', state: {name: joinName, room: room}}}>   
+                    
+                    <OverlayTrigger 
+                        placement="bottom"
+                        delay={{ show: 250, hide: 400 }}
+                        overlay={renderTooltip}
+                    >
                         <Button variant="primary" type='submit' style={{margin:"10px"}}>Join Room</Button>
+                    </OverlayTrigger>
                     </Link>
                     </Form.Group>
             </div>

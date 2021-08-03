@@ -1,13 +1,24 @@
-
+import { OverlayTrigger,Tooltip,FloatingLabel,Form} from 'react-bootstrap';
 
 function dropDown(prop) {
     function changeInst(event) {
         prop.load()
        prop.change(event.target.value)
     }
+    const renderTooltip = (props) => (
+        <Tooltip id="button-tooltip" {...props}>
+          Change instrument type 
+        </Tooltip>
+      );
     return (
-        <div>
-            <select  value={prop.instrument} onChange={changeInst}>
+        <>
+          <OverlayTrigger
+          placement="top"
+          delay={{ show: 250, hide: 400 }}
+          overlay={renderTooltip}
+        >
+        <FloatingLabel controlId="floatingSelect" label="Instrument">
+        <Form.Select aria-label="instrument drppdown"  value={prop.instrument} onChange={changeInst}>
                 <option  value="piano">Piano</option>
                 <option value="guitarAcoustic">Guitar Acoustic</option>
                 <option value="drumMachine">DrumMachine</option>
@@ -15,8 +26,10 @@ function dropDown(prop) {
                 <option value="xylophone">Xylophone</option>
                 <option value="violin">Violin</option>
                 <option value="organ">Organ</option>
-            </select>
-        </div>
+        </Form.Select>
+       </FloatingLabel>
+       </OverlayTrigger>
+        </>
     )
 }
 
