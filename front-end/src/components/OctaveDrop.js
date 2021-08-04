@@ -1,13 +1,24 @@
+import { OverlayTrigger,Tooltip,FloatingLabel,Form} from 'react-bootstrap';
 
 function OctaveDrop(prop) {
     function changeOcta(event) {
         prop.load()
         prop.change(event.target.value)
      }
+     const renderTooltip = (props) => (
+        <Tooltip id="button-tooltip" {...props}>
+           Change instrument octave 
+        </Tooltip>
+      );
      return (
-         <div >
-             <p>Keyboard:</p>
-             <select  value={prop.value} onChange={changeOcta} className="mb-2">
+         <>
+        <OverlayTrigger
+          placement="top"
+          delay={{ show: 250, hide: 400 }}
+          overlay={renderTooltip}>
+
+         <FloatingLabel controlId="floatingSelect" label="change octave">
+            <Form.Select  size='lg' aria-label="change octave" value={prop.value} onChange={changeOcta}>
                  <option value="1">1 Octave</option>
                  <option value="2">2 Octave</option>
                  <option value="3">3 Octave</option>
@@ -16,8 +27,10 @@ function OctaveDrop(prop) {
                  <option value="6">6 Octave</option>
                  <option value="7">7 Octave</option>
                  <option value="8">8 Octave</option>
-             </select>
-         </div>
+            </Form.Select>
+        </FloatingLabel>
+        </OverlayTrigger>
+         </>
      )
 }
 
