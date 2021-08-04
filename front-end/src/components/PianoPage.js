@@ -8,7 +8,7 @@ import { useEffect,useState } from "react"
 import * as Tone from 'tone'
 import socket from '../socket'
 import Dropdown from './dropDown';
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import  { useContext } from "react"
 import SharedPiano from '../context/SharedPianoContext'
 import OctaveDrop from './OctaveDrop'; 
@@ -21,7 +21,17 @@ import Hash from './Hash'
 function PianoPage(){
   const [instrument,setInstrument] = useState('piano')
   const {volume,setVolume,setOctave,octave,loading} = useContext(SharedPiano)
-  
+  const location = useLocation()
+  let room = location.state.room
+  let name = location.state.name
+
+  useEffect(() => {
+      socket.emit('join', {name, room})
+    return () => {
+      socket.emit('leave room')
+    }
+  }, [])
+
   useEffect(() => {
     socket.on('play sound', function(body) {
       const sampler = new Tone.Sampler({
