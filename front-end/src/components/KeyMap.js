@@ -2,10 +2,10 @@ import  { useContext } from "react"
 import SharedPiano from '../context/SharedPianoContext'
 import { OverlayTrigger,Tooltip,FloatingLabel,Form} from 'react-bootstrap';
 
-function KeyMap({load}) {
+function KeyMap() {
     let {keymap,setKeyMap,octave} = useContext(SharedPiano) 
     function changeOcta(event) {
-         load()
+        
         if(event.target.selectedIndex < octave) {
             setKeyMap(event.target.value)
         }else {

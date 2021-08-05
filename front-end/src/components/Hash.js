@@ -11,6 +11,7 @@ function Hash() {
 
     return (
         <div>
+            <span>Room Code:</span>
             <p>{roomId}</p>
         </div>
     )

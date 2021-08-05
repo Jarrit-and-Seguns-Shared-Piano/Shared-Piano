@@ -24,7 +24,7 @@ import ShowNote from './ShowNote';
 function PianoPage(){
   // const [note,setNote] = useState(''))
   const [instrument,setInstrument] = useState('piano')
-  const {volume,setVolume,setOctave,octave,loading} = useContext(SharedPiano)
+  const {volume,setVolume,setOctave,octave} = useContext(SharedPiano)
   const location = useLocation()
   let room = location.state.room
   let name = location.state.name
@@ -64,11 +64,12 @@ function PianoPage(){
 
   return (
     <>
-  <div className="features">
-    <Hash/>
-    <Users/>
-    <ShowNote/>
-    <div id="loading" style={{ backgroundColor: 'red'}}>
+      <div className='topAction'>
+      <Hash/>
+      <Users/>
+      <ShowNote/> 
+    </div>
+  <div id="features">
   {instrument === 'piano' ?
     <Piano />: instrument === 'guitarAcoustic' ?
     <GuitarAcoustic/> : instrument === 'drumMachine' ?
@@ -79,14 +80,11 @@ function PianoPage(){
     <Organ/>
   }
   </div>
-  </div>
   <div className="options">
-  <div>
-    <Form.Label>Volume:</Form.Label>
-      <Form.Range id="volume" name="vol" min="-60" max="5" onChange={e => {loading();setVolume(e.target.value)}} value={volume} />
-  </div>
+ 
 
-    <Dropdown value={instrument} change={setInstrument} load={loading}/>
+    <Dropdown value={instrument} change={setInstrument}/>
+    <OctaveDrop value={octave} change={setOctave} />
     <Link to={'/'}>
       <OverlayTrigger
         placement="top"
@@ -96,8 +94,11 @@ function PianoPage(){
         <Button variant="danger" type='submit'>Leave Room</Button>
       </OverlayTrigger>
     </Link>
-    <OctaveDrop value={octave} change={setOctave} load={loading}/>
-    <KeyMap load={loading}/>
+    <KeyMap/>
+    <div>
+    <Form.Label>Volume:</Form.Label>
+      <Form.Range id="volume" name="vol" min="-60" max="5" onChange={e => setVolume(e.target.value)} value={volume} />
+  </div>
   </div>
   </>
   )

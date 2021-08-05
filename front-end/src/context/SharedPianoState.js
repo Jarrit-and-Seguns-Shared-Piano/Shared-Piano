@@ -1,4 +1,4 @@
-import { useState,useEffect } from 'react'
+import { useState } from 'react'
 import SharedPianoContext from './SharedPianoContext'
 
 
@@ -6,16 +6,7 @@ function SharedPiano(props) {
      const [volume,setVolume] = useState(-12)
      const [octave,setOctave] = useState(2)
      const [currentMax,setCurrentMax] = useState(0)
-    
-        function loading() {
-          const loading = document.getElementById('loading')
-         loading.firstChild.style.opacity = 0;
-         loading.firstChild.style['pointer-events'] = 'none'
-         setTimeout(() => {
-          loading.firstChild.style.opacity = 1;
-          loading.firstChild.style['pointer-events'] = 'all'
-       }, 2000);
-      }
+
       
 
 
@@ -54,7 +45,6 @@ function SharedPiano(props) {
          octaveCalc,
          octave,
          setOctave,
-         loading,
          keymap,
          setKeyMap,
          currentMax,
