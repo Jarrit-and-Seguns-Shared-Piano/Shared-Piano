@@ -24,8 +24,7 @@ import ShowNote from './ShowNote';
 function PianoPage(){
   // const [note,setNote] = useState(''))
   const [instrument,setInstrument] = useState('piano')
-<<<<<<< HEAD
-  const {volume,setVolume,setOctave,octave,loading} = useContext(SharedPiano)
+  const {volume,setVolume,setOctave,octave} = useContext(SharedPiano)
   const location = useLocation()
   let room = location.state.room
   let name = location.state.name
@@ -37,10 +36,6 @@ function PianoPage(){
     }
   }, [])
 
-=======
-  const {volume,setVolume,setOctave,octave} = useContext(SharedPiano)
-  
->>>>>>> ec60607 (fixed crash bug)
   useEffect(() => {
     socket.on('play sound', function(body) {
       const sampler = new Tone.Sampler({
