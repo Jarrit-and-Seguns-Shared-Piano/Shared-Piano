@@ -2,7 +2,6 @@ import { OverlayTrigger,Tooltip,FloatingLabel,Form} from 'react-bootstrap';
 
 function OctaveDrop(prop) {
     function changeOcta(event) {
-        prop.load()
         prop.change(event.target.value)
      }
      const renderTooltip = (props) => (

@@ -3,14 +3,12 @@ import sample from './Samples';
 import  { useContext,useEffect } from "react"
 import SharedPiano from '../context/SharedPianoContext'
 import keyboard from '../keyboard/keyboard';
-// import KeyNote from '../context/KeyNoteContext'
+
 const octavePos = ['flat','sharp','flat','sharp','flat','flat','sharp','flat','sharp','flat','sharp','flat']
 
 
 function OctaveRender({octave,sound,name,note,keyOct}) {
     let {volume,keymap} = useContext(SharedPiano) 
-    // let {setNote} = useContext(KeyNote)
-    // console.log(loading)
     const notes = {}
     sound.forEach((keyNote,i) => {
         let string = note[i].replace('.','')
@@ -18,7 +16,11 @@ function OctaveRender({octave,sound,name,note,keyOct}) {
     })
     
     const sampler = sample(notes,volume)
-
+    // const load = console.log(sampler.loaded)
+    // if(load) {
+    //     console.log('dvfdss')
+    // }
+    // console.log(sampler.loaded)
     useEffect(() => {
         if(Number(keymap[keymap.length - 1]) + 1 > Object.keys(keyOct.octa).length) {
             alert('keyboard octave too high for selected instrument')
@@ -44,7 +46,7 @@ function OctaveRender({octave,sound,name,note,keyOct}) {
             document.removeEventListener('keydown',down);
             document.removeEventListener('keyup',up);
         }
-    },[volume,keymap,sampler])
+    },[volume,keymap,sampler]) 
 
     let counter = 0
         return (

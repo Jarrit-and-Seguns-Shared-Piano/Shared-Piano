@@ -8,6 +8,7 @@ import KeyNote from '../context/KeyNoteContext'
 
 
 function Button(prop) {
+    
     let {setNote} = useContext(KeyNote)
     function hover(e) {
         if(e.type === 'mouseout' && e.target.classList[1] === 'sharp') {
@@ -36,7 +37,7 @@ function Button(prop) {
 
 
     return (
-       <button onClick={e => showClick(e,'green')} onMouseOver={hover} onMouseOut={hover} onMouseDown={() =>{ sendSound();prop.sampler.triggerAttack(prop.keyNote, Tone.now())}} onMouseUp={() => prop.sampler.triggerRelease(prop.keyNote,Tone.now() + 0.3)} className={prop.buttonClass}></button>
+       <button onClick={e => showClick(e,'green')} onMouseOver={hover} onMouseOut={hover} onMouseDown={() =>{ sendSound();if(prop.sampler.loaded) {prop.sampler.triggerAttack(prop.keyNote, Tone.now())}}} onMouseUp={() => { if(prop.sampler.loaded) {prop.sampler.triggerRelease(prop.keyNote,Tone.now() + 0.3)}}} className={prop.buttonClass} ></button>
     )
 }
 

@@ -2,7 +2,6 @@ import { OverlayTrigger,Tooltip,FloatingLabel,Form} from 'react-bootstrap';
 
 function dropDown(prop) {
     function changeInst(event) {
-        prop.load()
        prop.change(event.target.value)
     }
     const renderTooltip = (props) => (

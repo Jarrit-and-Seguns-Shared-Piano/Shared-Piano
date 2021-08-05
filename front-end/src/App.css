@@ -38,17 +38,25 @@
   display: flex;
   justify-content: center;
 }
-.features {
+#features {
   height: 100%;
   display: flex;
+  width: 100vw;
   flex-direction: column;
   justify-content: space-around;
+  align-items: center;
 }
 .options {
   display: flex;
   justify-content: space-between;
-  width: 90vw;
+  width: 95vw;
   align-items: center;
+}
+.topAction {
+  display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 95vw;
 }
 /* .form-floating {
   width: 8.2em
