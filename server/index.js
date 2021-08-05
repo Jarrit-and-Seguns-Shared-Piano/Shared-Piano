@@ -17,6 +17,7 @@ io.on('connection', socket => {
         } else {
             const sameUser = getNames(name)
             sameUser.id = socket.id
+            socket.join(sameUser.room)
             io.to(sameUser.room).emit('get users', {users: getUsersInRoom(sameUser.room)})
         }
     })
