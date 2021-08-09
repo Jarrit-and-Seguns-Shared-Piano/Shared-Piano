@@ -1,5 +1,5 @@
 import piano from '../samples/pianoSample'
-import  { useContext,useEffect} from "react"
+import  { useContext } from "react"
 import OctaveRender from './octaveRender';
 import SharedPiano from '../context/SharedPianoContext'
 
@@ -8,7 +8,7 @@ import SharedPiano from '../context/SharedPianoContext'
 function Piano() {
     // load()
     // console.log('hello yall')
-    let {octaveCalc,keymap} = useContext(SharedPiano) 
+    let { octaveCalc } = useContext(SharedPiano) 
     const octavesObj = octaveCalc(piano)
     //  console.log(Object.keys(octavesObj.octa).length,Number(keymap[keymap.length - 1]) + 1)
     //  if(Number(keymap[keymap.length - 1]) + 1 > Object.keys(octavesObj.octa).length) {

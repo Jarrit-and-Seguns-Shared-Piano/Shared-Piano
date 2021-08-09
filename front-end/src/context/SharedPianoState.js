@@ -7,9 +7,6 @@ function SharedPiano(props) {
      const [octave,setOctave] = useState(2)
      const [currentMax,setCurrentMax] = useState(0)
 
-      
-
-
      const octaveCalc = (soundObj) => {
         let octaves = Math.floor(Object.keys(soundObj).length / 12)
         if(octave - 1 <= octaves) {
@@ -51,9 +48,6 @@ function SharedPiano(props) {
          setCurrentMax
      }
 
-  
-
-    
     return (
         <SharedPianoContext.Provider value={value}>
         {props.children}

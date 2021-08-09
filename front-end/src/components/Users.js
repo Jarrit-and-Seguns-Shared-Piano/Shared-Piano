@@ -12,9 +12,12 @@ function Users() {
     }, [])
     
     return (
-        <ul>
-            {users.map((users, i) => <li key={i}>{users.name}</li>)}
-        </ul>
+        <div>
+            <span>Users:</span>
+            <ul id='users_list'>
+                {users.map((users, i) => <li className='users' key={i}>{users.name}</li>)}
+            </ul>
+        </div>
     )
 }
 

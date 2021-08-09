@@ -29,7 +29,7 @@ code {
 }
 
 #home_page-inputs{
-  margin-top: 70px;
+  margin-top: 30px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -43,10 +43,24 @@ code {
   display:flex;
   flex-direction: column;
   align-items: center;
+  height:80%
+}
+
+#input_container{
+  height:80%
 }
 
 .profile {
   height: 75%;
   margin-bottom: 200px;
   width: fit-content;
+}
+
+#users_list{
+  list-style-type:none;
+  padding-left: 0;
+}
+
+.users{
+  font-weight: bold;
 }

@@ -20,41 +20,45 @@ import Hash from './Hash'
 import { Button,OverlayTrigger,Tooltip,Form } from 'react-bootstrap';
 import ShowNote from './ShowNote';
 
-
 function PianoPage(){
-  // const [note,setNote] = useState(''))
   const [instrument,setInstrument] = useState('piano')
   const {volume,setVolume,setOctave,octave} = useContext(SharedPiano)
   const location = useLocation()
   let room = location.state.room
   let name = location.state.name
+  let color = location.state.color
 
   useEffect(() => {
-      socket.emit('join', {name, room})
+    socket.emit('join', {name, room, color})
     return () => {
-      socket.emit('leave room')
+    socket.emit('leave room')
     }
-  }, [])
+  }, [name, room, color])
 
   useEffect(() => {
-    socket.on('play sound', function(body) {
+    socket.on('play sound', function( { body, user }) {
       const sampler = new Tone.Sampler({
           urls: {
-              A1: body
+              A1: body.body.sound
           },
           onload: () => {
               sampler.volume.value = volume;
               sampler.triggerAttackRelease( "A1", 0.5);
           }
       }).toDestination();
+      if(document.getElementById(body.body.note)){
+        document.getElementById(body.body.note).style.backgroundColor = user.color
+        setTimeout(() => {
+          if(body.body.class.split(" ")[1] === "sharp"){
+            document.getElementById(body.body.note).style.backgroundColor = "black"
+          } else {
+            document.getElementById(body.body.note).style.backgroundColor = "white"          
+          }
+        }, 400)  
+      }
     })
+    
   }, [volume])
- 
-  // useEffect(() => {
-  //   socket.on('get users', ({users}) => {
-  //     setUsers(users)
-  //   })
-  // }, [])
 
   const renderTooltip = (props) => (
     <Tooltip id="button-tooltip" {...props}>
@@ -65,41 +69,35 @@ function PianoPage(){
   return (
     <>
       <div className='topAction'>
-      <Hash/>
-      <Users/>
-      <ShowNote/> 
+        <Hash/>    
+        <Users/>
+        <ShowNote/> 
+      </div>
+      <div id="features">
+        {instrument === 'piano' ?
+          <Piano />: instrument === 'guitarAcoustic' ?
+          <GuitarAcoustic/> : instrument === 'drumMachine' ?
+          <DrumMachine/> : instrument === 'flute' ?
+          <Flute/> : instrument === 'xylophone' ?
+          <Xylophone/> : instrument === 'violin' ?
+          <Violin/> :
+          <Organ/>
+        }
+      </div>
+    <div className="options">
+      <Dropdown value={instrument} change={setInstrument}/>
+      <OctaveDrop value={octave} change={setOctave} />
+      <Link to={'/'}>
+        <OverlayTrigger placement="top" delay={{ show: 250, hide: 400 }} overlay={renderTooltip}>
+          <Button variant="danger" type='submit'>Leave Room</Button>
+        </OverlayTrigger>
+      </Link>
+      <KeyMap/>
+      <div>
+        <Form.Label>Volume:</Form.Label>
+        <Form.Range id="volume" name="vol" min="-60" max="5" onChange={e => setVolume(e.target.value)} value={volume} />
+      </div>
     </div>
-  <div id="features">
-  {instrument === 'piano' ?
-    <Piano />: instrument === 'guitarAcoustic' ?
-    <GuitarAcoustic/> : instrument === 'drumMachine' ?
-    <DrumMachine/> : instrument === 'flute' ?
-    <Flute/> : instrument === 'xylophone' ?
-    <Xylophone/> : instrument === 'violin' ?
-    <Violin/> :
-    <Organ/>
-  }
-  </div>
-  <div className="options">
- 
-
-    <Dropdown value={instrument} change={setInstrument}/>
-    <OctaveDrop value={octave} change={setOctave} />
-    <Link to={'/'}>
-      <OverlayTrigger
-        placement="top"
-        delay={{ show: 250, hide: 400 }}
-        overlay={renderTooltip}
-      >
-        <Button variant="danger" type='submit'>Leave Room</Button>
-      </OverlayTrigger>
-    </Link>
-    <KeyMap/>
-    <div>
-    <Form.Label>Volume:</Form.Label>
-      <Form.Range id="volume" name="vol" min="-60" max="5" onChange={e => setVolume(e.target.value)} value={volume} />
-  </div>
-  </div>
   </>
   )
 }

@@ -7,7 +7,7 @@ function Hash() {
 
     useEffect(() => {
         setRoom(location.state.room)
-    }, [])
+    }, [location.state.room])
 
     return (
         <div>

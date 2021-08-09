@@ -1,10 +1,10 @@
 const users = []
 
-  const addUser = ({ id, name, room }) => {
-      name = name.trim().toLowerCase();
+  const addUser = ({ id, name, room, color }) => {
+      name = name.trim()
       room = room.toLowerCase();
-
-      const user = { id, name, room };
+      color = color
+      const user = { id, name, room, color };
 
       users.push(user);
       console.log(users)

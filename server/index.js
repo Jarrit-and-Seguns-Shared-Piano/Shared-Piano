@@ -4,14 +4,14 @@ const server = require('http').Server(app);
 const io = require('socket.io')(server);
 const PORT = process.env.PORT || 8000
 
-const { addUser, removeUser, getUser, getUsersInRoom, getNames, getRooms, users } = require( './users.js')
+const { addUser, removeUser, getUser, getUsersInRoom, getNames, getRooms} = require( './users.js')
 
 io.on('connection', socket => {
     console.log('a user has connected')
 
-    socket.on('join', ({name, room}) => {
+    socket.on('join', ({name, room, color}) => {
         if(!getNames(name)){
-            const { user } = addUser({id: socket.id, name, room})
+            const { user } = addUser({id: socket.id, name, room, color})
             socket.join(user.room)
             io.to(user.room).emit('get users', {users: getUsersInRoom(user.room)})
         } else {
@@ -24,7 +24,7 @@ io.on('connection', socket => {
 
     socket.on('play sound', (body) => {
         const user = getUser(socket.id)
-        socket.broadcast.to(user.room).emit('play sound', body)
+        socket.broadcast.to(user.room).emit('play sound', { body, user })
     })
 
     socket.on('leave room', () => {

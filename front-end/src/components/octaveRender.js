@@ -43,8 +43,8 @@ function OctaveRender({octave,sound,name,note,keyOct}) {
         document.addEventListener('keydown', down,false)
         document.addEventListener('keyup', up,false)
         return () => {
-            document.removeEventListener('keydown',down);
-            document.removeEventListener('keyup',up);
+            document.removeEventListener('keydown', down);
+            document.removeEventListener('keyup', up);
         }
     },[volume,keymap,sampler]) 
 

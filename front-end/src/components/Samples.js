@@ -1,5 +1,4 @@
 import * as Tone from 'tone'
-import keyboard from '../keyboard/keyboard';
 
 function Sampler (notes,volume) {
     // const tuneKey = (sampler,sound,keymap,keyOct,volume) => {
