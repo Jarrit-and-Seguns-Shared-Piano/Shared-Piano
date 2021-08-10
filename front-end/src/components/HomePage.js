@@ -56,7 +56,7 @@ function HomePage(){
         document.getElementById('nav-join-room').className = 'tab-pane fade show active'
         document.getElementById('nav-make-room').className = 'tab-pane fade'
     }
-
+    const randomColor = Math.floor(Math.random()*16777215).toString(16);
     return (
         <div id="heading">
             <div className="profile">
@@ -81,7 +81,7 @@ function HomePage(){
                             <Form.Group id="home_page-inputs">
                                 <Form.Control placeholder="User name" type='email' style={{margin:"10px"}} onChange={(event) => setName(event.target.value)}/>
                                 <span>User Color:</span>
-                                <input type="color" onChange={(event) => setColor(event.target.value)}/>
+                                <input type="color" value={`#${randomColor}`} onChange={(event) => setColor(event.target.value)}/>
                                 <Link onClick={event => (!name && !color)? event.preventDefault() : null} to={{pathname: '/piano', state: {name: name, room: Hash(6), color:color}}}>
                                     <Button variant="primary" type='submit' style={{margin:"10px"}}>Make Room</Button>
                                 </Link>
