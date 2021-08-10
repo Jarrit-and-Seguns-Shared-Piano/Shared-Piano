@@ -3,15 +3,17 @@ import { Link } from 'react-router-dom'
 import socket from '../socket'
 import Form from 'react-bootstrap/Form'
 import { Button,OverlayTrigger,Tooltip } from 'react-bootstrap';
+import  { useContext} from "react"
+import KeyNote from '../context/KeyNoteContext'
 
 function HomePage(){
+    let {randomColor} = useContext(KeyNote)
     const [name, setName] = useState('')
     const [joinName, setJoinName] = useState('')
     const [room, setRoom] = useState('')
     const [dupName, setDupName] = useState(false)
-    const [color, setColor] = useState('#000000')
-    const [joinColor, setJoinColor] = useState('#000000')
-
+    const [color, setColor] = useState(`#${randomColor}`)
+  
     useEffect(() => {
         socket.emit('check names', { joinName, room })
     }, [joinName, room])
@@ -56,7 +58,6 @@ function HomePage(){
         document.getElementById('nav-join-room').className = 'tab-pane fade show active'
         document.getElementById('nav-make-room').className = 'tab-pane fade'
     }
-    const randomColor = Math.floor(Math.random()*16777215).toString(16);
     return (
         <div id="heading">
             <div className="profile">
@@ -81,7 +82,7 @@ function HomePage(){
                             <Form.Group id="home_page-inputs">
                                 <Form.Control placeholder="User name" type='email' style={{margin:"10px"}} onChange={(event) => setName(event.target.value)}/>
                                 <span>User Color:</span>
-                                <input type="color" value={`#${randomColor}`} onChange={(event) => setColor(event.target.value)}/>
+                                <input type="color" value={color} onChange={(event) => setColor(event.target.value)}/>
                                 <Link onClick={event => (!name && !color)? event.preventDefault() : null} to={{pathname: '/piano', state: {name: name, room: Hash(6), color:color}}}>
                                     <Button variant="primary" type='submit' style={{margin:"10px"}}>Make Room</Button>
                                 </Link>
@@ -92,8 +93,8 @@ function HomePage(){
                                 <Form.Control placeholder="User name" type='email' style={{margin:"10px"}} onChange={(event) => setJoinName(event.target.value)}/>
                                 <Form.Control placeholder="Room code" type='email' style={{margin:"10px"}} onChange={(event) => setRoom(event.target.value)}/>
                                 <span>User Color:</span>
-                                <input type="color" onChange={(event) => setJoinColor(event.target.value)}/> 
-                                <Link onClick={event => (!joinName || !room || !dupName || !joinColor) ? event.preventDefault() : null} to={{pathname: '/piano', state: {name: joinName, room: room, color: joinColor}}}>
+                                <input type="color" value={color} onChange={(event) => setColor(event.target.value)}/> 
+                                <Link onClick={event => (!joinName || !room || !dupName || !color) ? event.preventDefault() : null} to={{pathname: '/piano', state: {name: joinName, room: room, color: color}}}>
                                     <OverlayTrigger placement="bottom" delay={{ show: 250, hide: 400 }} overlay={renderTooltip}>
                                         <Button variant="primary" type='submit' style={{margin:"10px"}}>Join Room</Button>
                                     </OverlayTrigger>
