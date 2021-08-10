@@ -49,6 +49,25 @@ function OctaveRender({octave,sound,name,note,keyOct, color}) {
     },[volume,keymap,sampler]) 
 
     let counter = 0
+    let noteKey = 0
+    let curentOct = Number(octave[octave.length - 1])
+    console.log(curentOct)
+    if(curentOct === 1) {
+      noteKey = 12
+    }else if(curentOct === 2) {
+        noteKey = 24
+    }else if(curentOct === 3) {
+        noteKey = 36
+    }else if(curentOct === 4) {
+        noteKey = 48
+    }else if(curentOct === 5) {
+        noteKey = 60
+    }else if(curentOct === 6) {
+        noteKey = 72
+    }else if(curentOct === 7) {
+        noteKey = 84
+    }
+    
         return (
             
             <div className={octave}>
@@ -60,7 +79,8 @@ function OctaveRender({octave,sound,name,note,keyOct, color}) {
                         }else {
                             counter = 1
                         }
-                        return <Button key={i} color={color} sampler={sampler} keyNote={string} sound={keys} buttonClass={`${name} ${octavePos[counter -1]}`} note={string}/> 
+                        noteKey++
+                        return <Button key={i} color={color} sampler={sampler} keyNote={string} sound={keys} buttonClass={`${name} ${octavePos[counter -1]} note${noteKey}`} note={string}/> 
                 })}
                 
             </div>
