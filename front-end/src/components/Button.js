@@ -2,11 +2,9 @@ import * as Tone from 'tone'
 import socket from '../socket'
 import  { useContext} from "react"
 import KeyNote from '../context/KeyNoteContext'
-import { useLocation } from 'react-router-dom'
 
 
 function Button(prop) {
-    console.log(prop)
     let {setNote} = useContext(KeyNote)
     function hover(e) {
         if(e.type === 'mouseout' && e.target.classList[1] === 'sharp') {

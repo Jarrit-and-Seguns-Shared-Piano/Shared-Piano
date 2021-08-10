@@ -43,9 +43,11 @@ io.on('connection', socket => {
 
     socket.on('disconnect', () => {
         const user = getUser(socket.id)
+        if(user){
         removeUser(user.id)
         io.to(user.room).emit('get users', {room: user.room, users: getUsersInRoom(user.room)})
         console.log(`${user.name} has left ${user.room}`)
+        }
         console.log('user has disconnected')
     })
 })

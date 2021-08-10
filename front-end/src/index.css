@@ -47,7 +47,13 @@ code {
 }
 
 #input_container{
-  height:80%
+  height:80%;
+  width: 16em;
+  justify-content: center;
+}
+
+#nav-tab{
+  justify-content: center;
 }
 
 .profile {

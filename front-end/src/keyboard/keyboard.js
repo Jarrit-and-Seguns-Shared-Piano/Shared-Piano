@@ -22,7 +22,7 @@ function Keyboard(e,sampler,keyNote,sound,activeOcta) {
                         // }
                         // console.log(obj)
                         // console.log(keyNote[0], octaveActive[0], sound[0])
-                        socket.emit('play sound', { key: sound[0] })
+                        socket.emit('play sound', sound[0])
                         noteDisplay.innerText = keyNote[0]
                         sampler.triggerAttack(keyNote[0], now)
                 } break;
