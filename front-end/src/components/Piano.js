@@ -5,7 +5,7 @@ import SharedPiano from '../context/SharedPianoContext'
 
 
 
-function Piano() {
+function Piano({color}) {
     // load()
     // console.log('hello yall')
     let { octaveCalc } = useContext(SharedPiano) 
@@ -17,7 +17,7 @@ function Piano() {
     return (
         <div className="board">
             {Object.keys(octavesObj.octa).map(keys => {
-               return <OctaveRender keyOct={octavesObj} octave={keys} sound={octavesObj.octa[keys]} name='piano' note={octavesObj.octakey[keys]} key={keys}/>
+               return <OctaveRender color={color} keyOct={octavesObj} octave={keys} sound={octavesObj.octa[keys]} name='piano' note={octavesObj.octakey[keys]} key={keys}/>
             })}
         </div>
     )

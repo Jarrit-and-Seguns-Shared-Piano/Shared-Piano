@@ -2,10 +2,11 @@ import * as Tone from 'tone'
 import socket from '../socket'
 import  { useContext} from "react"
 import KeyNote from '../context/KeyNoteContext'
+import { useLocation } from 'react-router-dom'
 
 
 function Button(prop) {
-
+    console.log(prop)
     let {setNote} = useContext(KeyNote)
     function hover(e) {
         if(e.type === 'mouseout' && e.target.classList[1] === 'sharp') {
@@ -13,11 +14,11 @@ function Button(prop) {
         }else if(e.type === 'mouseout' && e.target.classList[1] === 'flat') {
             e.target.style.backgroundColor = 'white'
         }else {
-            e.target.style.backgroundColor = 'blue'
+            e.target.style.backgroundColor = 'lightGray'
         }
     }
-    function showClick(event,color) {
-        event.target.style.backgroundColor = color
+    function showClick(event) {
+        event.target.style.backgroundColor = prop.color
         setTimeout(() => {
             if(event.target.classList[1] === 'sharp') {
                 event.target.style.backgroundColor = 'black'

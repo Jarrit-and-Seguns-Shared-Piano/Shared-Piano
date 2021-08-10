@@ -22,7 +22,8 @@ io.on('connection', socket => {
         }
     })
 
-    socket.on('play sound', (body) => {
+    socket.on('play sound', ( {body}) => {
+        console.log("here", body)
         const user = getUser(socket.id)
         socket.broadcast.to(user.room).emit('play sound', { body, user })
     })
@@ -41,6 +42,10 @@ io.on('connection', socket => {
     })
 
     socket.on('disconnect', () => {
+        const user = getUser(socket.id)
+        removeUser(user.id)
+        io.to(user.room).emit('get users', {room: user.room, users: getUsersInRoom(user.room)})
+        console.log(`${user.name} has left ${user.room}`)
         console.log('user has disconnected')
     })
 })

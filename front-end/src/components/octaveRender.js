@@ -7,7 +7,7 @@ import keyboard from '../keyboard/keyboard';
 const octavePos = ['flat','sharp','flat','sharp','flat','flat','sharp','flat','sharp','flat','sharp','flat']
 
 
-function OctaveRender({octave,sound,name,note,keyOct}) {
+function OctaveRender({octave,sound,name,note,keyOct, color}) {
     let {volume,keymap} = useContext(SharedPiano) 
     const notes = {}
     sound.forEach((keyNote,i) => {
@@ -60,7 +60,7 @@ function OctaveRender({octave,sound,name,note,keyOct}) {
                         }else {
                             counter = 1
                         }
-                        return <Button key={i} sampler={sampler} keyNote={string} sound={keys} buttonClass={`${name} ${octavePos[counter -1]}`} note={string}/> 
+                        return <Button key={i} color={color} sampler={sampler} keyNote={string} sound={keys} buttonClass={`${name} ${octavePos[counter -1]}`} note={string}/> 
                 })}
                 
             </div>

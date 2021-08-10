@@ -13,10 +13,18 @@ function Keyboard(e,sampler,keyNote,sound,activeOcta) {
             switch (key) {
             case 'a':
                 if(octaveActive[0]) {
+                    console.log("hey")
                         octaveActive[0].style.backgroundColor = 'green'
-                        socket.emit('play sound', sound[0])
+                        // const obj = {
+                        //     note:keyNote[0],
+                        //     sound: sound[0],
+                        //     key: octaveActive[0]                                
+                        // }
+                        // console.log(obj)
+                        // console.log(keyNote[0], octaveActive[0], sound[0])
+                        socket.emit('play sound', { key: sound[0] })
                         noteDisplay.innerText = keyNote[0]
-                        sampler.triggerAttack(keyNote[0],now)
+                        sampler.triggerAttack(keyNote[0], now)
                 } break;
                 case 'w':
                 if(octaveActive[1]) {

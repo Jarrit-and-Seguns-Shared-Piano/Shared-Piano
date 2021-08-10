@@ -11,8 +11,8 @@ function Hash() {
 
     return (
         <div>
-            <span>Room Code:</span>
-            <p>{roomId}</p>
+            <h1 id="roomName">Room Code</h1>
+            <p id="roomHash">{roomId}</p>
         </div>
     )
 }
