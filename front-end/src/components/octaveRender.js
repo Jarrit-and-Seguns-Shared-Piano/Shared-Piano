@@ -1,6 +1,6 @@
 import Button from './Button';
 import sample from './Samples';
-import  { useContext,useEffect } from "react"
+import  { useContext,useEffect,useState } from "react"
 import SharedPiano from '../context/SharedPianoContext'
 import keyboard from '../keyboard/keyboard';
 
@@ -14,16 +14,12 @@ function OctaveRender({octave,sound,name,note,keyOct, color}) {
         let string = note[i].replace('.','')
         notes[string.replace('s','#')] = keyNote
     })
-    
+  
     const sampler = sample(notes,volume)
-    // const load = console.log(sampler.loaded)
-    // if(load) {
-    //     console.log('dvfdss')
-    // }
-    // console.log(sampler.loaded)
+   
     useEffect(() => {
         if(Number(keymap[keymap.length - 1]) + 1 > Object.keys(keyOct.octa).length) {
-            alert('keyboard octave too high for selected instrument')
+            console.log('how')
             keymap = 'octave 0'
             // setKeyMap('octave 0')
         }
@@ -49,8 +45,27 @@ function OctaveRender({octave,sound,name,note,keyOct, color}) {
     },[volume,keymap,sampler]) 
 
     let counter = 0
-        return (
-            
+    let noteKey = 0
+    let curentOct = Number(octave[octave.length - 1])
+    if(curentOct === 1) {
+      noteKey = 12
+    }else if(curentOct === 2) {
+        noteKey = 24
+    }else if(curentOct === 3) {
+        noteKey = 36
+    }else if(curentOct === 4) {
+        noteKey = 48
+    }else if(curentOct === 5) {
+        noteKey = 60
+    }else if(curentOct === 6) {
+        noteKey = 72
+    }else if(curentOct === 7) {
+        noteKey = 84
+    }
+ 
+
+  
+        return (    
             <div className={octave}>
                   { sound.map((keys,i) => {
                        let string = note[i].replace('.','')
@@ -60,12 +75,14 @@ function OctaveRender({octave,sound,name,note,keyOct, color}) {
                         }else {
                             counter = 1
                         }
-                        return <Button key={i} color={color} sampler={sampler} keyNote={string} sound={keys} buttonClass={`${name} ${octavePos[counter -1]}`} note={string}/> 
+                        noteKey++
+                        return <Button key={i} color={color} sampler={sampler} keyNote={string} sound={keys} buttonClass={`${name} ${octavePos[counter -1]} note${noteKey}`} note={string}/> 
                 })}
                 
             </div>
         )
-    
+   
+ 
 }
 
 export default OctaveRender

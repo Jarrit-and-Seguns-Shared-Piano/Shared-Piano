@@ -8,42 +8,51 @@
 
 }
 .flat {
-  border: 1px solid #000000;
-  width: 2.72vw;
-  height: 36vh;
-  background-color: white;
-  color: red;
-  text-align: center;
+  background-color: #ffffff;
+  height: 75%;
+  width: 2%;
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+  position: absolute;
+  color: #000000;
 }
 .flat:hover {
   background-color: blue;  
 }
 
 .sharp {
-  background-color: black;
-  width: 2.1vw;
-  height: 23vh;
-  margin-left: -30px;
-  margin-right: -30px;
-  z-index: 1;
-  color: red;
-  text-align: center;
-  border-color: white;
-  border-top-color: black;
+  background-color: #000000;
+  position: absolute;
+  height: 40%;
+  width: 1.5%;
+  border-radius: 5px;
+  z-index: 3;
+  color: #ffffff;
 }
 .board {
-  display: flex;
+  position: absolute;
+  overflow: hidden;
+  top: 40%;
+  left: 0%;
+  width: 100%;
+  height: 55%;
 }
 .octave {
   display: flex;
   justify-content: center;
+}
+.positionLeft {
+  position: absolute;
+  width: 100%;
+  height: 50%;
+  /* left: 40%;*/
 }
 #features {
   height: 100%;
   display: flex;
   width: 100vw;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: flex-start;
   align-items: center;
 }
 .options {
@@ -97,3 +106,266 @@
   flex-direction: column;
   align-items: center;
 }
+<<<<<<< HEAD
+=======
+.note85 {
+  left: 97.5%
+}
+.note84 {
+  left: 95.5%
+}
+.note83 {
+  left: 94.8%
+}
+.note82 {
+  left: 93.5%
+}
+.note81 {
+  left: 92.8%
+}
+.note80 {
+  left: 91.5%
+}
+.note79 {
+  left: 90.8%
+}
+.note78 {
+  left: 89.5%
+}
+.note77 {
+  left: 87.5%
+}
+.note76 {
+  left: 86.8%
+}
+.note75 {
+  left: 85.5%
+}
+.note74 {
+  left: 84.8%
+}
+.note73 {
+  left: 83.5%
+}
+.note72 {
+  left: 81.5%
+}
+.note71 {
+  left: 80.8%
+}
+.note70 {
+  left: 79.5%
+}
+.note69 {
+  left: 78.8%
+}
+.note68 {
+  left: 77.5%
+}
+.note67 {
+  left: 76.8%
+}
+.note66 {
+  left: 75.5%
+}
+.note65 {
+  left: 73.5%
+}
+.note64 {
+  left: 72.8%
+}
+.note63 {
+  left: 71.5%
+}
+.note62 {
+  left: 70.8%
+}
+.note61 {
+  left: 69.5%
+}
+.note60 {
+  left: 67.5%
+}
+.note59 {
+  left: 66.8%
+}
+.note58 {
+  left: 65.5%
+}
+.note57 {
+  left: 64.8%
+}
+.note56 {
+  left: 63.5%
+}
+.note55 {
+  left: 62.8%
+}
+.note54 {
+  left: 61.5%
+}
+.note53 {
+  left: 59.5%
+}
+.note52 {
+  left: 58.8%
+}
+.note51 {
+  left: 57.5%
+}
+.note50 {
+  left: 56.8%
+}
+.note49 {
+  left: 55.5%
+}
+.note48 {
+  left: 53.5%
+}
+.note47 {
+  left: 52.8%
+}
+.note46 {
+  left: 51.5%
+}
+.note45 {
+  left: 50.8%
+}
+.note44 {
+  left: 49.5%
+}
+.note43 {
+  left: 48.8%
+}
+.note42 {
+  left: 47.5%
+}
+.note41 {
+  left: 45.5%
+}
+.note40 {
+  left: 44.8%
+}
+.note39 {
+  left: 43.5%
+}
+.note38 {
+  left: 42.8%
+}
+.note37 {
+  left: 41.5%
+}
+.note36 {
+  left: 39.5%
+}
+.note35 {
+<<<<<<< HEAD
+  left: 83.5%
+} */
+>>>>>>> 735e7c8 (fixed keyboard)
+=======
+  left: 38.8%
+} 
+.note34 {
+  left: 37.5%
+}
+.note33 {
+  left: 36.8%
+}
+.note32 {
+  left: 35.5%
+}
+.note31 {
+  left: 34.8%
+}
+.note30 {
+  left: 33.5%
+}
+.note29 {
+  left: 31.5%
+}
+.note28 {
+  left: 30.8%
+}
+.note27 {
+  left: 29.5%
+}
+.note26 {
+  left: 28.8%
+}
+.note25 {
+  left: 27.5%
+}
+.note24 {
+  left: 25.5%
+}
+.note23 {
+  left: 24.8%
+}
+.note22 {
+  left: 23.5%
+}
+.note21 {
+  left: 22.8%
+}
+.note20 {
+  left: 21.5%
+}
+.note19 {
+  left: 20.8%
+}
+.note18 {
+  left: 19.5%
+}
+.note17 {
+  left: 17.5%
+}
+.note16 {
+  left: 16.8%
+}
+.note15 {
+  left: 15.5%
+}
+.note14 {
+  left: 14.8%
+}
+.note13 {
+  left: 13.5%
+}
+.note12 {
+  left: 11.5%
+}
+.note11 {
+  left: 10.8%
+}
+.note10 {
+  left: 9.5%
+}
+.note9 {
+  left: 8.8%
+}
+.note8 {
+  left: 7.5%
+}
+.note7 {
+  left: 6.8%
+}
+.note6 {
+  left: 5.5%
+}
+.note5 {
+  left: 3.5%
+}
+.note4 {
+  left: 2.8%
+}
+.note3 {
+  left: 1.5%
+}
+.note2 {
+  left: 0.8%
+}
+.note1 {
+  left: -0.5%
+}
+>>>>>>> 4447a5d (fixed keyboard)

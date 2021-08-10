@@ -4,13 +4,15 @@ import OctaveRender from './octaveRender';
 import SharedPiano from '../context/SharedPianoContext'
 
 function Violin() {
-    let {octaveCalc} = useContext(SharedPiano) 
+    let {octaveCalc,left: position} = useContext(SharedPiano)
     const octavesObj = octaveCalc(Violins)
     return (
         <div className="board">
+            <div className="positionLeft" style={{left: position} }>
             {Object.keys(octavesObj.octa).map(keys => {
                return <OctaveRender keyOct={octavesObj} octave={keys} note={octavesObj.octakey[keys]} sound={octavesObj.octa[keys]} name='violin' key={keys}/>
             })}
+            </div>
         </div>
     )
 }
