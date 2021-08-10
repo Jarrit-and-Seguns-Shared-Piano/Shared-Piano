@@ -71,13 +71,13 @@ function HomePage(){
                 </div>
                 <div id="input_container">
                     <nav>
-                        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                        <div className="nav nav-tabs" id="nav-tab" role="tablist">
                             <button onClick={() => showMakeRoom()} className="nav-link active" id="nav-make-room-tab" data-bs-toggle="tab" data-bs-target="#nav-make-room" type="button" role="tab" aria-controls="nav-make-room" aria-selected="true">Make Room</button>
                             <button onClick={() => showJoinRoom()} className="nav-link" id="nav-join-room-tab" data-bs-toggle="tab" data-bs-target="#nav-join-room" type="button" role="tab" aria-controls="nav-join-room" aria-selected="false">Join Room</button>
                         </div>
                     </nav>
-                    <div class="tab-content" id="nav-tabContent">
-                        <div class="tab-pane fade show active" id="nav-make-room" role="tabpanel" aria-labelledby="nav-make-room">
+                    <div className="tab-content" id="nav-tabContent">
+                        <div className="tab-pane fade show active" id="nav-make-room" role="tabpanel" aria-labelledby="nav-make-room">
                             <Form.Group id="home_page-inputs">
                                 <Form.Control placeholder="User name" type='email' style={{margin:"10px"}} onChange={(event) => setName(event.target.value)}/>
                                 <span>User Color:</span>
@@ -87,7 +87,7 @@ function HomePage(){
                                 </Link>
                             </Form.Group>
                         </div>
-                        <div class="tab-pane fade" id="nav-join-room" role="tabpanel" aria-labelledby="nav-join-room">
+                        <div className="tab-pane fade" id="nav-join-room" role="tabpanel" aria-labelledby="nav-join-room">
                             <Form.Group id="home_page-inputs">
                                 <Form.Control placeholder="User name" type='email' style={{margin:"10px"}} onChange={(event) => setJoinName(event.target.value)}/>
                                 <Form.Control placeholder="Room code" type='email' style={{margin:"10px"}} onChange={(event) => setRoom(event.target.value)}/>

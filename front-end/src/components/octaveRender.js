@@ -31,10 +31,10 @@ function OctaveRender({octave,sound,name,note,keyOct, color}) {
             notes.push(string.replace('s','#'))
         })
         const down = (e) => {
-            keyboard(e,sampler,notes,sound,keymap)
+            keyboard(e,sampler,notes,sound,keymap,color)
             }
         const up = (e) => {
-            keyboard(e,sampler,notes,sound,keymap)
+            keyboard(e,sampler,notes,sound,keymap,color)
             }
         document.addEventListener('keydown', down,false)
         document.addEventListener('keyup', up,false)

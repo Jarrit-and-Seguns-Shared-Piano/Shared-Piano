@@ -38,8 +38,7 @@ function PianoPage(){
   }, [name, room, color])
 
   useEffect(() => {
-    socket.on('play sound', function( { body, user }) {
-      console.log(body)
+    socket.on('play sound', function({body, user}) {
       let sound = body.sound
       const sampler = new Tone.Sampler({
           urls: {
@@ -50,13 +49,15 @@ function PianoPage(){
               sampler.triggerAttackRelease( "A1", 0.5);
           }
       }).toDestination();
-      if(document.getElementById(body.note)){
-        document.getElementById(body.note).style.backgroundColor = user.color
+      const btnClass = body.class.split(" ")[2]
+      const btnElement = document.getElementsByClassName(btnClass)[0]
+      if(btnElement){
+        btnElement.style.backgroundColor = user.color
         setTimeout(() => {
           if(body.class.split(" ")[1] === "sharp"){
-            document.getElementById(body.note).style.backgroundColor = "black"
+            btnElement.style.backgroundColor = "black"
           } else {
-            document.getElementById(body.note).style.backgroundColor = "white"          
+            btnElement.style.backgroundColor = "white"          
           }
         }, 400)  
       }
@@ -81,12 +82,12 @@ function PianoPage(){
       <div id="features">
         {instrument === 'piano' ?
           <Piano color={color}/>: instrument === 'guitarAcoustic' ?
-          <GuitarAcoustic/> : instrument === 'drumMachine' ?
-          <DrumMachine/> : instrument === 'flute' ?
-          <Flute/> : instrument === 'xylophone' ?
-          <Xylophone/> : instrument === 'violin' ?
-          <Violin/> :
-          <Organ/>
+          <GuitarAcoustic color={color}/> : instrument === 'drumMachine' ?
+          <DrumMachine color={color}/> : instrument === 'flute' ?
+          <Flute color={color}/> : instrument === 'xylophone' ?
+          <Xylophone color={color}/> : instrument === 'violin' ?
+          <Violin color={color}/> :
+          <Organ color={color}/>
         }
         <KeyError/>
       </div>

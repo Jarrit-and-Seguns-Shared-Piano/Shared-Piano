@@ -40,7 +40,7 @@ function Button(prop) {
             note: prop.note,
             class: prop.buttonClass
         }
-        socket.emit('play sound', {body})
+        socket.emit('play sound', body)
     }
 
     return (

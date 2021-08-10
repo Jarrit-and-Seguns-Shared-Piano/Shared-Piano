@@ -10,12 +10,20 @@ function Users({ color }) {
         setUsers(users)
         })        
     }, [])
-    
+    console.log(users,'hello')
     return (
         <div id="users">
             <h1 id="userList">Users</h1>
             <ul id='users_list'>
-                {users.map((users, i) => <li style={{color: color}} className='users' key={i}>{users.name}</li>)}
+                {users.map((users, i) => {
+                    if(users.color === color) {
+                         return <li style={{color: users.color}} className='users' key={users.id}><span key={i} style={{color: 'black'}}>Current: </span>{users.name}</li> 
+                                
+                
+                    }else {
+                        return <li style={{color: users.color}} className='users' key={users.id}>{users.name}</li>
+                    }
+               })}
             </ul>
         </div>
     )
