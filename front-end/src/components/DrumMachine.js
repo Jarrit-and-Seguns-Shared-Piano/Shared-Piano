@@ -4,15 +4,17 @@ import OctaveRender from './octaveRender';
 import SharedPiano from '../context/SharedPianoContext'
 
 function DrumMachine() {
-    let {octaveCalc} = useContext(SharedPiano) 
+    let {octaveCalc,left: position} = useContext(SharedPiano)
     const octavesObj = octaveCalc(drum)
-    console.log(octavesObj)
+    
     return (
         <div className="board">
+            <div className="positionLeft" style={{left: position} }>
         {Object.keys(octavesObj.octa).map(keys => {
             console.log(keys)
            return <OctaveRender keyOct={octavesObj} octave={keys} sound={octavesObj.octa[keys]} note={octavesObj.octakey[keys]} name='drum' key={keys}/>
         })}
+        </div>
         </div>
     )
 }

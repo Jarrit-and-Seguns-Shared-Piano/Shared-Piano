@@ -5,7 +5,7 @@ import * as Tone from 'tone'
 function Keyboard(e,sampler,keyNote,sound,activeOcta) {
     const key = e.key.toLowerCase()
     const now = Tone.now()
-    const keyboardKeys = document.getElementsByClassName('board')
+    const keyboardKeys = document.getElementsByClassName('positionLeft')
     const noteDisplay = document.getElementById('noteDisplay')
     const octaveActive = keyboardKeys[0].children[activeOcta[activeOcta.length - 1]].children
     if(sampler.loaded) {

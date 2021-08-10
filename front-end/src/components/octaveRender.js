@@ -51,7 +51,6 @@ function OctaveRender({octave,sound,name,note,keyOct, color}) {
     let counter = 0
     let noteKey = 0
     let curentOct = Number(octave[octave.length - 1])
-    console.log(curentOct)
     if(curentOct === 1) {
       noteKey = 12
     }else if(curentOct === 2) {
@@ -67,7 +66,7 @@ function OctaveRender({octave,sound,name,note,keyOct, color}) {
     }else if(curentOct === 7) {
         noteKey = 84
     }
-    
+    // console.log(left)
         return (
             
             <div className={octave}>
