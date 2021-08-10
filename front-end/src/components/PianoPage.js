@@ -19,9 +19,11 @@ import KeyMap from './KeyMap';
 import Hash from './Hash'
 import { Button,OverlayTrigger,Tooltip,Form } from 'react-bootstrap';
 import ShowNote from './ShowNote';
+import KeyError from './KeyError';
 
 function PianoPage(){
   const [instrument,setInstrument] = useState('piano')
+  
   const {volume,setVolume,setOctave,octave} = useContext(SharedPiano)
   const location = useLocation()
   let room = location.state.room
@@ -67,6 +69,7 @@ function PianoPage(){
       Click to leave room 
     </Tooltip>
   );
+  
 
   return (
     <>
@@ -85,6 +88,7 @@ function PianoPage(){
           <Violin/> :
           <Organ/>
         }
+        <KeyError/>
       </div>
     <div className="options">
       <Dropdown value={instrument} change={setInstrument}/>

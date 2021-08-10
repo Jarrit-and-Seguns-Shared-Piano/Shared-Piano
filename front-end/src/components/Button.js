@@ -6,8 +6,7 @@ import { useLocation } from 'react-router-dom'
 
 
 function Button(prop) {
-    console.log(prop)
-    let {setNote} = useContext(KeyNote)
+    let {setNote,setLoad} = useContext(KeyNote)
     function hover(e) {
         if(e.type === 'mouseout' && e.target.classList[1] === 'sharp') {
             e.target.style.backgroundColor = 'black'
@@ -17,7 +16,13 @@ function Button(prop) {
             e.target.style.backgroundColor = 'lightGray'
         }
     }
+ 
     function showClick(event) {
+        if(prop.sampler.loaded) {
+            setLoad(false)
+        }else {
+            setLoad(true)
+        }
         event.target.style.backgroundColor = prop.color
         setTimeout(() => {
             if(event.target.classList[1] === 'sharp') {
@@ -40,7 +45,7 @@ function Button(prop) {
     }
 
     return (
-       <button id={prop.note} onClick={e => showClick(e,'green')} onMouseOver={hover} onMouseOut={hover} onMouseDown={(event) =>{ sendSound(event);if(prop.sampler.loaded) {prop.sampler.triggerAttack(prop.keyNote, Tone.now())}}} onMouseUp={() => { if(prop.sampler.loaded) {prop.sampler.triggerRelease(prop.keyNote,Tone.now() + 0.3)}}} className={prop.buttonClass} ></button>
+       <button id={prop.note} onClick={e => showClick(e)} onMouseOver={hover} onMouseOut={hover} onMouseDown={(event) =>{ sendSound(event);if(prop.sampler.loaded) {prop.sampler.triggerAttack(prop.keyNote, Tone.now())}}} onMouseUp={() => { if(prop.sampler.loaded) {prop.sampler.triggerRelease(prop.keyNote,Tone.now() + 0.3)}}} className={prop.buttonClass} ></button>
     )
 }
 

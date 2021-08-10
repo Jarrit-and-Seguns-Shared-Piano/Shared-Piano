@@ -3,13 +3,15 @@ import SharedPiano from '../context/SharedPianoContext'
 import { OverlayTrigger,Tooltip,FloatingLabel,Form} from 'react-bootstrap';
 
 function KeyMap() {
-    let {keymap,setKeyMap,octave} = useContext(SharedPiano) 
+   
+    let {keymap,setKeyMap,octave,setkeyError} = useContext(SharedPiano) 
     function changeOcta(event) {
-        
         if(event.target.selectedIndex < octave) {
+            setkeyError(false)
             setKeyMap(event.target.value)
         }else {
-            alert('cant map to octave not visible')
+            setkeyError(true)
+            // alert('cant map to octave not visible')
         }
      }
      const renderTooltip = (props) => (
@@ -20,6 +22,7 @@ function KeyMap() {
      return (
          
         < >
+     
        <OverlayTrigger
           placement="top"
           delay={{ show: 250, hide: 400 }}

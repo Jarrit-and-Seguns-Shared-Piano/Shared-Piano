@@ -36,6 +36,8 @@ function SharedPiano(props) {
      }
      const [keymap,setKeyMap] = useState('octave 0')
      const [left,setLeft] = useState('35%')
+     const [keyError, setkeyError] = useState(false);
+     
      const value = {
          volume,
          setVolume,
@@ -47,7 +49,9 @@ function SharedPiano(props) {
          currentMax,
          setCurrentMax,
          left,
-         setLeft
+         setLeft,
+        keyError, 
+        setkeyError
      }
 
     return (

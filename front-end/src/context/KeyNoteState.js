@@ -3,9 +3,11 @@ import KeyNote from './KeyNoteContext'
 
 function SharedPiano(props) {
     const [note,setNote] = useState('')
-
+    const [load,setLoad] = useState(true)
     const value = {
-        note,setNote
+        note,setNote,
+        load,
+        setLoad
     }
 
    return (

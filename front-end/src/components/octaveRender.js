@@ -1,6 +1,6 @@
 import Button from './Button';
 import sample from './Samples';
-import  { useContext,useEffect } from "react"
+import  { useContext,useEffect,useState } from "react"
 import SharedPiano from '../context/SharedPianoContext'
 import keyboard from '../keyboard/keyboard';
 
@@ -14,16 +14,12 @@ function OctaveRender({octave,sound,name,note,keyOct, color}) {
         let string = note[i].replace('.','')
         notes[string.replace('s','#')] = keyNote
     })
-    
+  
     const sampler = sample(notes,volume)
-    // const load = console.log(sampler.loaded)
-    // if(load) {
-    //     console.log('dvfdss')
-    // }
-    // console.log(sampler.loaded)
+   
     useEffect(() => {
         if(Number(keymap[keymap.length - 1]) + 1 > Object.keys(keyOct.octa).length) {
-            alert('keyboard octave too high for selected instrument')
+            console.log('how')
             keymap = 'octave 0'
             // setKeyMap('octave 0')
         }
@@ -66,9 +62,10 @@ function OctaveRender({octave,sound,name,note,keyOct, color}) {
     }else if(curentOct === 7) {
         noteKey = 84
     }
-    // console.log(left)
-        return (
-            
+ 
+
+  
+        return (    
             <div className={octave}>
                   { sound.map((keys,i) => {
                        let string = note[i].replace('.','')
@@ -84,7 +81,8 @@ function OctaveRender({octave,sound,name,note,keyOct, color}) {
                 
             </div>
         )
-    
+   
+ 
 }
 
 export default OctaveRender

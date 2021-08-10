@@ -8,6 +8,7 @@ function Keyboard(e,sampler,keyNote,sound,activeOcta) {
     const keyboardKeys = document.getElementsByClassName('positionLeft')
     const noteDisplay = document.getElementById('noteDisplay')
     const octaveActive = keyboardKeys[0].children[activeOcta[activeOcta.length - 1]].children
+ 
     if(sampler.loaded) {
         if(e.type === 'keydown') {
             switch (key) {
