@@ -70,7 +70,6 @@ function PianoPage(){
       Click to leave room 
     </Tooltip>
   );
-  
 
   return (
     <>
