@@ -20,7 +20,7 @@ import Hash from './Hash'
 import { Button,OverlayTrigger,Tooltip,Form } from 'react-bootstrap';
 import ShowNote from './ShowNote';
 import KeyError from './KeyError';
-import Chat from './Chat'
+// import Chat from './Chat'
 
 function PianoPage(){
   const [instrument,setInstrument] = useState('piano')
@@ -33,6 +33,7 @@ function PianoPage(){
 
   useEffect(() => {
     socket.emit('join', {name, room, color})
+    socket.emit('send message')
     return () => {
     socket.emit('leave room')
     }
@@ -79,9 +80,9 @@ function PianoPage(){
         <Users color={color}/>
         <ShowNote/> 
       </div>
-      <div>
-        <Chat/>
-      </div>      
+      {/* <div>
+        <Chat color={color}/>
+      </div>       */}
       <div id="features">
         {instrument === 'piano' ?
           <Piano color={color}/>: instrument === 'guitarAcoustic' ?

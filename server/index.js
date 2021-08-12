@@ -6,6 +6,8 @@ const PORT = process.env.PORT || 8000
 
 const { addUser, removeUser, getUser, getUsersInRoom, getNames, getRooms} = require( './users.js')
 
+const { addMessage, getMessagesInRoom } = require('./messages')
+app.use( express.static(__dirname + '/../../build'))
 io.on('connection', socket => {
     console.log('a user has connected')
 
@@ -22,7 +24,7 @@ io.on('connection', socket => {
         }
     })
 
-    socket.on('play sound', ( body) => {
+    socket.on('play sound', (body) => {
         console.log("here", body)
         const user = getUser(socket.id)
         socket.broadcast.to(user.room).emit('play sound', { body, user })
@@ -42,9 +44,12 @@ io.on('connection', socket => {
     })
 
     socket.on('send message', message => {
-        user = getUser(socket.id)
-        console.log(user)
-        socket.broadcast.to(user.room).emit('receive message', {user: user, message: message})
+        const user = getUser(socket.id)
+        if(message){
+            addMessage({message: message, id: user.id, name: user.name, room: user.room, color: user.color})
+        }
+        // console.log(getMessagesInRoom(user.room))
+        io.to(user.room).emit('receive message', {messages: getMessagesInRoom(user.room)})
     })
 
     socket.on('disconnect', () => {

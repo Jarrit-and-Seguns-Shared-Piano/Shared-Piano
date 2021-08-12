@@ -92,3 +92,7 @@ code {
     margin-bottom: 110px;
 }
 }
+
+.messages {
+  list-style-type:none;
+}
