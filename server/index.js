@@ -41,6 +41,12 @@ io.on('connection', socket => {
         socket.emit('check names', { foundName, foundRoom })
     })
 
+    socket.on('send message', message => {
+        user = getUser(socket.id)
+        console.log(user)
+        socket.broadcast.to(user.room).emit('receive message', {user: user, message: message})
+    })
+
     socket.on('disconnect', () => {
         const user = getUser(socket.id)
         if(user){
