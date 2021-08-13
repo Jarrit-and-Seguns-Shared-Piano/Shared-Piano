@@ -8,7 +8,7 @@ import { useEffect,useState } from "react"
 import * as Tone from 'tone'
 import socket from '../socket'
 import Dropdown from './dropDown';
-import { Link, useLocation } from 'react-router-dom'
+import { Link, useLocation, useHistory } from 'react-router-dom'
 import  { useContext } from "react"
 import SharedPiano from '../context/SharedPianoContext'
 import OctaveDrop from './OctaveDrop'; 
@@ -25,11 +25,23 @@ import KeyError from './KeyError';
 function PianoPage(){
   const [instrument,setInstrument] = useState('piano')
   
+  // let room
+
   const {volume,setVolume,setOctave,octave} = useContext(SharedPiano)
   const location = useLocation()
-  let room = location.state.room
-  let name = location.state.name
-  let color = location.state.color
+  let history = useHistory()
+  if(!location.state){
+    history.push('/')
+    location.state = {}
+    location.state.room = "test"
+    location.state.name = "test"
+    location.state.color = "#000000"
+  }
+  console.log(location.state)
+    let room = location.state.room
+    let name = location.state.name
+    let color = location.state.color    
+
 
   useEffect(() => {
     socket.emit('join', {name, room, color})
@@ -97,7 +109,7 @@ function PianoPage(){
       </div>
     <div className="options">
       <Dropdown value={instrument} change={setInstrument}/>
-      <OctaveDrop value={octave} change={setOctave} />
+      <OctaveDrop style={{paddingBottom: "0px"}}value={octave} change={setOctave} />
       <Link to={'/'}>
         <OverlayTrigger placement="top" delay={{ show: 250, hide: 400 }} overlay={renderTooltip}>
           <Button variant="danger" type='submit'>Leave Room</Button>

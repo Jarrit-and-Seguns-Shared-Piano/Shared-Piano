@@ -4,7 +4,6 @@ import * as Tone from 'tone'
 
 function Keyboard(e,sampler,keyNote,sound,activeOcta,color) {
     const input = document.getElementById("message input")
-
     const key = e.key.toLowerCase()
     const now = Tone.now()
     const keyboardKeys = document.getElementsByClassName('positionLeft')
@@ -16,16 +15,18 @@ function Keyboard(e,sampler,keyNote,sound,activeOcta,color) {
             switch (key) {
             case 'a':
                 if(octaveActive[0]) {
-               
                         octaveActive[0].style.backgroundColor = color
+                        
                         const body = {
                             note:keyNote[0],
                             sound: sound[0],
                             class: octaveActive[0].className                             
                         }
+                        
                         socket.emit('play sound', body)
                         noteDisplay.innerText = keyNote[0]
                         sampler.triggerAttack(keyNote[0], now)
+                        console.log(octaveActive)
                 } break;
                 case 'w':
                 if(octaveActive[1]) {
