@@ -112,7 +112,11 @@ function PianoPage(){
         <ShowNote/> 
       </div>
       {/* <div>
+<<<<<<< HEAD
         <Chat color={color}/>
+=======
+        <Chat/>
+>>>>>>> 8adceb9 (changes)
       </div>       */}
       <div id="features">
         {renderSwitch(instrument)}

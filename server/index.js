@@ -2,8 +2,8 @@ const express = require('express');
 const app = express();
 const server = require('http').Server(app);
 const io = require('socket.io')(server);
+require('dotenv').config()
 const PORT = process.env.PORT || 8000
-
 const { addUser, removeUser, getUser, getUsersInRoom, getNames, getRooms} = require( './users.js')
 
 const { addMessage, getMessagesInRoom } = require('./messages')

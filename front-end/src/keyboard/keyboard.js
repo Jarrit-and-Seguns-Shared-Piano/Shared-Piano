@@ -11,6 +11,11 @@ function Keyboard(e,sampler,keyNote,sound,activeOcta,color) {
     const octaveActive = keyboardKeys[0].children[activeOcta[activeOcta.length - 1]].children
  
     if(sampler.loaded && input !== document.activeElement) {
+        const key = e.key.toLowerCase()
+        const now = Tone.now()
+        const keyboardKeys = document.getElementsByClassName('positionLeft')
+        const noteDisplay = document.getElementById('noteDisplay')
+        const octaveActive = keyboardKeys[0].children[activeOcta[activeOcta.length - 1]].children
         if(e.type === 'keydown') {
             switch (key) {
             case 'a':
@@ -26,7 +31,7 @@ function Keyboard(e,sampler,keyNote,sound,activeOcta,color) {
                         socket.emit('play sound', body)
                         noteDisplay.innerText = keyNote[0]
                         sampler.triggerAttack(keyNote[0], now)
-                        console.log(octaveActive)
+                       
                 } break;
                 case 'w':
                 if(octaveActive[1]) {

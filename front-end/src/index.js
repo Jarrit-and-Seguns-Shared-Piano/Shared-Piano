@@ -12,9 +12,9 @@ ReactDOM.render(
   <React.StrictMode>
     <SharedPiano>
       <KeyNote>
-    <Router>
-      <App />
-    </Router>
+      <Router>
+       <App />
+     </Router>
     </KeyNote>
     </SharedPiano>
   </React.StrictMode>,
