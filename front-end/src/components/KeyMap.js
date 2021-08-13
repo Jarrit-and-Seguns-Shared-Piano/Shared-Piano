@@ -11,7 +11,6 @@ function KeyMap() {
             setKeyMap(event.target.value)
         }else {
             setkeyError(true)
-            // alert('cant map to octave not visible')
         }
      }
      const renderTooltip = (props) => (

@@ -22,6 +22,7 @@ import ShowNote from './ShowNote';
 import KeyError from './KeyError';
 // import Chat from './Chat'
 
+
 function PianoPage(){
   const [instrument,setInstrument] = useState('piano')
   
@@ -84,6 +85,24 @@ function PianoPage(){
       Click to leave room 
     </Tooltip>
   );
+  const renderSwitch = (param) => {
+    switch(param) {
+      case 'piano':
+        return <Piano color={color}/> ;
+      case 'guitarAcoustic':
+        return  <GuitarAcoustic color={color}/> 
+      case 'drumMachine':
+        return   <DrumMachine color={color}/>
+      case  'flute':
+        return   <Flute color={color}/>
+      case  'xylophone':
+        return  <Xylophone color={color}/> 
+      case 'violin':
+        return <Violin color={color}/>
+      default: 
+        return <Organ color={color}/>;
+    }
+  }
 
   return (
     <>
@@ -96,16 +115,9 @@ function PianoPage(){
         <Chat color={color}/>
       </div>       */}
       <div id="features">
-        {instrument === 'piano' ?
-          <Piano color={color}/>: instrument === 'guitarAcoustic' ?
-          <GuitarAcoustic color={color}/> : instrument === 'drumMachine' ?
-          <DrumMachine color={color}/> : instrument === 'flute' ?
-          <Flute color={color}/> : instrument === 'xylophone' ?
-          <Xylophone color={color}/> : instrument === 'violin' ?
-          <Violin color={color}/> :
-          <Organ color={color}/>
-        }
+        {renderSwitch(instrument)}
         <KeyError/>
+        
       </div>
     <div className="options">
       <Dropdown value={instrument} change={setInstrument}/>

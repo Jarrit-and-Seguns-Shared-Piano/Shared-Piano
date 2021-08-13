@@ -19,11 +19,8 @@ function OctaveRender({octave,sound,name,note,keyOct, color}) {
    
     useEffect(() => {
         if(Number(keymap[keymap.length - 1]) + 1 > Object.keys(keyOct.octa).length) {
-            console.log('how')
             keymap = 'octave 0'
-            // setKeyMap('octave 0')
         }
-        // console.log(octaveNub,Number(keymap[keymap.length - 1]) + 1)
         const octaveKey = keyOct.octakey[keymap]
         const notes = []
         octaveKey.forEach(keyword => {
@@ -47,23 +44,31 @@ function OctaveRender({octave,sound,name,note,keyOct, color}) {
     let counter = 0
     let noteKey = 0
     let curentOct = Number(octave[octave.length - 1])
-    if(curentOct === 1) {
-      noteKey = 12
-    }else if(curentOct === 2) {
-        noteKey = 24
-    }else if(curentOct === 3) {
-        noteKey = 36
-    }else if(curentOct === 4) {
-        noteKey = 48
-    }else if(curentOct === 5) {
-        noteKey = 60
-    }else if(curentOct === 6) {
-        noteKey = 72
-    }else if(curentOct === 7) {
-        noteKey = 84
+    switch (curentOct) {
+        case 1:
+            noteKey = 12
+            break;
+        case 2:
+            noteKey = 24
+            break;
+        case 3:
+            noteKey = 36
+            break;
+        case 4:
+            noteKey = 48
+            break;
+        case 5:
+            noteKey = 60
+            break;
+        case 6:
+            noteKey = 72
+            break;
+        case 6:
+            noteKey = 84
+            break;
+        default:
+            break;
     }
- 
-
   
         return (    
             <div className={octave}>
