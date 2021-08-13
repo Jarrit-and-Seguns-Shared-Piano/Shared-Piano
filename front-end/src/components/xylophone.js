@@ -7,11 +7,12 @@ import SharedPiano from '../context/SharedPianoContext'
 function Xylophone({color}) {
     let {octaveCalc,left: position} = useContext(SharedPiano)
     const octavesObj = octaveCalc(xylophone)
+    console.log(octavesObj)
     return (
         <div className="board">
             <div className="positionLeft" style={{left: position} }>
             {Object.keys(octavesObj.octa).map(keys => {
-               return <OctaveRender color={color} keyOct={octavesObj} octave={keys} note={octavesObj.octakey[keys]} sound={octavesObj.octa[keys]} name='piano' key={keys}/>
+               return <OctaveRender color={color} keyOct={octavesObj} octave={keys} note={octavesObj.octakey[keys]} sound={octavesObj.octa[keys]} name='xylophone' key={keys}/>
             })}
             </div>
         </div>

@@ -14,7 +14,7 @@ function OctaveRender({octave,sound,name,note,keyOct, color}) {
         let string = note[i].replace('.','')
         notes[string.replace('s','#')] = keyNote
     })
-  
+ 
     const sampler = sample(notes,volume)
    
     useEffect(() => {
@@ -63,7 +63,7 @@ function OctaveRender({octave,sound,name,note,keyOct, color}) {
         case 6:
             noteKey = 72
             break;
-        case 6:
+        case 7:
             noteKey = 84
             break;
         default:

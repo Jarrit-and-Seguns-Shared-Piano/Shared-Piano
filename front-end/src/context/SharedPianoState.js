@@ -19,15 +19,17 @@ function SharedPiano(props) {
             octakey: {}
         }
         for(let i = 0 ; i <= octaves; i++) {
-            octavesObj.octa[`octave ${i}`] = []
-            octavesObj.octakey[`octave ${i}`] = []
-            if(i === octaves && keys.length < 12) {
-                octavesObj.octa[`octave ${i}`] = keys
-                octavesObj.octakey[`octave ${i}`] = keyNote
-            }else {
-               for(let y = 0; y < 12 ;y++) {
-                    octavesObj.octa[`octave ${i}`].push(keys.shift())
-                    octavesObj.octakey[`octave ${i}`].push(keyNote.shift())
+            if(keys.length){
+                octavesObj.octa[`octave ${i}`] = []
+                octavesObj.octakey[`octave ${i}`] = []
+                if(i === octaves && keys.length < 12 && keys.length > 0) {
+                    octavesObj.octa[`octave ${i}`] = keys
+                    octavesObj.octakey[`octave ${i}`] = keyNote
+                }else {
+                    for(let y = 0; y < 12 ;y++) {
+                        octavesObj.octa[`octave ${i}`].push(keys.shift())
+                        octavesObj.octakey[`octave ${i}`].push(keyNote.shift())
+                    }            
                 }
             }        
         }

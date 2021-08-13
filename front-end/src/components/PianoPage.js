@@ -125,7 +125,11 @@ function PianoPage(){
       </div>
     <div className="options">
       <Dropdown value={instrument} change={setInstrument}/>
+<<<<<<< HEAD
       <OctaveDrop style={{paddingBottom: "0px"}}value={octave} change={setOctave} />
+=======
+      <OctaveDrop value={octave} change={setOctave} octave={octave} />
+>>>>>>> ff60ff7 (bug fix)
       <Link to={'/'}>
         <OverlayTrigger placement="top" delay={{ show: 250, hide: 400 }} overlay={renderTooltip}>
           <Button variant="danger" type='submit'>Leave Room</Button>
