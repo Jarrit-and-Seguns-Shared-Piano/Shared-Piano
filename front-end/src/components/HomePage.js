@@ -111,7 +111,7 @@ function HomePage(){
             <div className="profile">
                 <img className="team_pictures" src="/Segun.jpg" alt="Segun Subair"/>
                 <h3>Segun Subair</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                <p> Tone.js library was used to trigger the sound played when a button is clicked on the screen or a key is pressed on the keyboard. Tone.js sampler was used to load the sound samples. The sampler method loaded was used to improve user experience by making the buttons playable only when the sound is loaded. Each instrument has different octaves users can switch to. I also implemented the ability to switch keyboard octave users can map to whichever octave they want if available.</p>
             </div>
         </div>
     )
