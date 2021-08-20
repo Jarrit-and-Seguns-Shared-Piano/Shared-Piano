@@ -20,7 +20,7 @@ import Hash from './Hash'
 import { Button,OverlayTrigger,Tooltip,Form } from 'react-bootstrap';
 import ShowNote from './ShowNote';
 import KeyError from './KeyError';
-// import Chat from './Chat'
+import Chat from './Chat'
 
 
 function PianoPage(){
@@ -111,13 +111,17 @@ function PianoPage(){
         <Users color={color}/>
         <ShowNote/> 
       </div>
-      {/* <div>
-        <Chat color={color}/>
-      </div>       */}
+          
       <div id="features">
         {renderSwitch(instrument)}
-        <KeyError/>
-        
+        <div className='divider'>
+            <div>
+              <KeyError/>
+            </div>
+            <div className='chatIcon'>
+              <Chat color={color}/>
+          </div> 
+        </div>
       </div>
     <div className="options">
       <Dropdown value={instrument} change={setInstrument}/>

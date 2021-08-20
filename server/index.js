@@ -46,7 +46,15 @@ io.on('connection', socket => {
     socket.on('send message', message => {
         const user = getUser(socket.id)
         if(message){
-            addMessage({message: message, id: user.id, name: user.name, room: user.room, color: user.color})
+            const now = new Date()
+            let times
+            if(now.getHours() > 12) {
+                 times = now.getHours()-12 + ":" + now.getMinutes()
+            }else {
+               times = now.getHours() + ":" + now.getMinutes()
+            }
+             
+            addMessage({message: message,time: times, id: user.id, name: user.name, room: user.room, color: user.color})
         }
         // console.log(getMessagesInRoom(user.room))
         io.to(user.room).emit('receive message', {messages: getMessagesInRoom(user.room)})

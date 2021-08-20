@@ -1,7 +1,96 @@
-.chatContainer {
+.modal {
+    top: 52vh;
+    left: 39vw;
+ }
+ 
+ .modal-backdrop {
+    background-color: transparent;
+ }
+ .modal-content {
+    position: relative;
     display: flex;
-    width: 90vw;
+    flex-direction: column;
+    width: 100%;
+    pointer-events: auto;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid rgba(0,0,0,.2);
+    border-radius: 1.3rem;
+    outline: 0;
+} 
+.my-1 {
+    padding-right: 0px;
+    padding-left: 0px;
+}
+.user {
+    border: 1px solid #ddd;
+    padding: 5px 15px;
+    border-radius: 10px;
+    font-size: 17px;
+    background: blue;
+    /* margin-bottom: 15px; */
+    border-bottom-right-radius: 1px;
+    float: right;
+    /* text-align: end; */
+}
+.timeCont {
+    display: flex;
     justify-content: flex-end;
+    align-items: center;
+    margin-bottom: 4px;
+}
+.receive {
+    border: 1px solid #ddd;
+    padding: 5px 15px;
+    border-top-left-radius: 0px;
+    border-radius: 10px;
+    font-size: 17px;
+    background: #dfe6e9;
+    /* margin-bottom: 15px; */
+    width: auto;
+    /* float: left; */
+}
+.receiveCont {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+.receiveSpan {
+    display: flex;
+    border-radius: 22px;
+    width: 37px;
+    height: 36px;
+    margin-right: 10px;
+    justify-content: center;
+    align-items: center;
+}
+.row {
+    justify-content: center;
+}
+.chatContainer {
+    overflow: scroll
+}
+.chatContainer::-webkit-scrollbar {
+    display: none;
+  }
+.notif {
     position: absolute;
-    top: 85%;
+    top: 86vh;
+    left: 93.6vw;
+    background: red;
+    border-radius: 22px;
+    width: 22px;
+    pointer-events: none;
+}
+#chatBtn {
+    border-radius: 22px;
+    height: 37px;
+    width: 45px;
+    padding: 0px;
+}
+.modal-body {
+    height: 290px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }

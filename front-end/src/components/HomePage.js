@@ -2,7 +2,7 @@ import React, {useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import socket from '../socket'
 import Form from 'react-bootstrap/Form'
-import { Button,OverlayTrigger,Tooltip } from 'react-bootstrap';
+import { Button,OverlayTrigger,Tooltip,Image } from 'react-bootstrap';
 import  { useContext} from "react"
 import KeyNote from '../context/KeyNoteContext'
 
@@ -65,8 +65,9 @@ function HomePage(){
                 <h3>Jarrit Alicea</h3>
                 <p>Utilizing Socket.IO we can communicate between a server we made and any clients that interact with this app. When certain events happen on the app we can send a signal to our server that tells it to perform some type of activity. Whether that be adding a user and their credentials to a room, removing and deleting users when they leave, or sending sounds so only users in the same room can hear each other.</p>
             </div>
-            <div id="text_container">
+            <div id="text_container" style={{ height: '140%'}}>
                 <div id="title">
+                <Image src="/favicon.png"  alt="logo" rounded />
                     <h1>Keyboard Hero</h1>
                     <p>Keyboard Hero is an interactive and collaborative online keyboard made using Tone.js, a Web Audio framework for creating interactive music in the browser, and Socket.IO to enable real-time, bidirectional event-based communication</p>
                 </div>

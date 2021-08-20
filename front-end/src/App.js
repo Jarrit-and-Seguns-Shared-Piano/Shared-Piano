@@ -6,7 +6,7 @@ function App() {
 
   return (
 
-    <div className="App">
+    <div className="Apps">
       <Switch>
         <Route path='/piano' component={PianoPage}/>
         <Route exact path='/' component={HomePage}/>
