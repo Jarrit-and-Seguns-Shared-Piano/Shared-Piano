@@ -1,4 +1,4 @@
-# Shared-Piano
+# Keyboard Hero
 bass        - Karoryfer
 
 bassoon     - VSO2
