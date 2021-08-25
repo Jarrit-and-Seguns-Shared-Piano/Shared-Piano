@@ -1,10 +1,9 @@
-import organ from '../samples/organSample'
 import  { useContext } from "react"
 import OctaveRender from './octaveRender';
 import SharedPiano from '../context/SharedPianoContext'
 
 function Organ({color}) {
-    let {octaveCalc,left: position} = useContext(SharedPiano)
+    let {octaveCalc,left: position,organ} = useContext(SharedPiano)
     const octavesObj = octaveCalc(organ)
     return (
         <div className="board">

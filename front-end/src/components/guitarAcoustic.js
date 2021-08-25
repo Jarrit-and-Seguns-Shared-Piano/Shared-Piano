@@ -1,11 +1,10 @@
-import guitar from "../samples/guitarAcoustic"
 import  { useContext } from "react"
 import OctaveRender from './octaveRender';
 import SharedPiano from '../context/SharedPianoContext'
 
 
 function GuitarAcoustic({color}) {
-    let {octaveCalc,left: position} = useContext(SharedPiano)
+    let {octaveCalc,left: position,guitar} = useContext(SharedPiano)
     const octavesObj = octaveCalc(guitar)
     return (
         <div className="board">

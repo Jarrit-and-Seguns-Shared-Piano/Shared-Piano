@@ -39,5 +39,6 @@ const drumMachine = {
     C3,Cs3,D3,Ds3,E3,
     F3,G3
 }
+
 export default drumMachine
 //CDEFGAB

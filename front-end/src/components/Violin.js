@@ -1,10 +1,9 @@
-import Violins from '../samples/violinSample'
 import  { useContext } from "react"
 import OctaveRender from './octaveRender';
 import SharedPiano from '../context/SharedPianoContext'
 
 function Violin({color}) {
-    let {octaveCalc,left: position} = useContext(SharedPiano)
+    let {octaveCalc,left: position,Violins} = useContext(SharedPiano)
     const octavesObj = octaveCalc(Violins)
     return (
         <div className="board">

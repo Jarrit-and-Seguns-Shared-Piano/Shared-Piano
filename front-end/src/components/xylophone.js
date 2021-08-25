@@ -1,13 +1,11 @@
-import xylophone from "../samples/xylophoneSample"
 import  { useContext } from "react"
 import OctaveRender from './octaveRender';
 import SharedPiano from '../context/SharedPianoContext'
 
 
 function Xylophone({color}) {
-    let {octaveCalc,left: position} = useContext(SharedPiano)
+    let {octaveCalc,left: position,xylophone} = useContext(SharedPiano)
     const octavesObj = octaveCalc(xylophone)
-    console.log(octavesObj)
     return (
         <div className="board">
             <div className="positionLeft" style={{left: position} }>

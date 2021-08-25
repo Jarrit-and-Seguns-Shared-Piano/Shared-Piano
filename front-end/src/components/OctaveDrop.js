@@ -2,25 +2,28 @@ import { OverlayTrigger,Tooltip,FloatingLabel,Form} from 'react-bootstrap';
 import  { useContext } from "react"
 import SharedPiano from '../context/SharedPianoContext'
 
+
 function OctaveDrop(prop) {
-    let {setLeft} = useContext(SharedPiano) 
+    let {setLeft,checkOctave} = useContext(SharedPiano) 
+     const octObj = checkOctave()
+
     function changeOcta(event) {
         const value = Number(event.target.value)
         if(value === 1) {
             setLeft('43%')
-        }else if(value === 2) {
+        }else if(value === 2 && octObj[prop.instrument] >= 2) {
             setLeft('37%')
-        }else if(value === 3) {
+        }else if(value === 3 && octObj[prop.instrument] >= 3) {
             setLeft('30%')
-        }else if(value === 4) {
+        }else if(value === 4 && octObj[prop.instrument] >= 4) {
             setLeft('25%')
-        }else if(value === 5) {
+        }else if(value === 5 && octObj[prop.instrument] >= 5) {
             setLeft('15%')
-        }else if(value === 6) {
+        }else if(value === 6 && octObj[prop.instrument] >= 6) {
             setLeft('10%')
-        }else if(value === 7) {
+        }else if(value === 7 && octObj[prop.instrument] >= 7) {
             setLeft('1%')
-        }else if(value === 8) {
+        }else if(value === 8 && octObj[prop.instrument] >= 8) {
             setLeft('0.5%')
         } 
         prop.change(value)

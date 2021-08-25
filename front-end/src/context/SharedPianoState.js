@@ -1,6 +1,12 @@
 import { useState } from 'react'
 import SharedPianoContext from './SharedPianoContext'
-
+import piano from '../samples/pianoSample'
+import guitar from "../samples/guitarAcoustic"
+import drum from '../samples/drumMachine'
+import flute from '../samples/fluteSample'
+import xylophone from "../samples/xylophoneSample"
+import Violins from '../samples/violinSample'
+import organ from '../samples/organSample'
 
 function SharedPiano(props) {
      const [volume,setVolume] = useState(-12)
@@ -39,6 +45,23 @@ function SharedPiano(props) {
      const [keymap,setKeyMap] = useState('octave 0')
      const [left,setLeft] = useState('35%')
      const [keyError, setkeyError] = useState(false);
+
+
+     function checkOctave() {
+        function octave(obj) {
+            return  Math.ceil(Object.keys(obj).length/12)
+         }
+         const instObj = {
+             piano: octave(piano),
+             guitarAcoustic: octave(guitar),
+             drumMachine: octave(drum),
+             flute: octave(flute),
+             xylophone: octave(xylophone),
+             violin: octave(Violins),
+             organ: octave(organ)
+         }
+         return instObj
+     }
      
      const value = {
          volume,
@@ -53,7 +76,15 @@ function SharedPiano(props) {
          left,
          setLeft,
         keyError, 
-        setkeyError
+        setkeyError,
+        checkOctave,
+        drum,
+        piano,
+        flute,
+        xylophone,
+        Violins,
+        organ,
+        guitar
      }
 
     return (

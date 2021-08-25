@@ -9,7 +9,6 @@ function Sampler (notes,volume,render) {
             sampler.volume.value = volume
         }
     }).toDestination();
-    console.log(sampler)
     
     return sampler
 }

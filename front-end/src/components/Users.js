@@ -23,10 +23,12 @@ function Users({ color }) {
           const callback = function(mutationsList, observer) {
             for(const mutation of mutationsList) {
                 if (mutation.type === 'childList') {
+                  if( messageEl.current) {
                   messageEl.current.scrollTop = messageEl.current.scrollHeight
                   setTimeout(function(){
                     messageEl.current.scrollTop = 0;
                   }, 1000);
+                }
                 }
             }
         };

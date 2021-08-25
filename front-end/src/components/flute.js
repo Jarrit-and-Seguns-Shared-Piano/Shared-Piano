@@ -1,10 +1,10 @@
 import  { useContext } from "react"
 import OctaveRender from './octaveRender';
 import SharedPiano from '../context/SharedPianoContext'
-import flute from '../samples/fluteSample'
+
 
 function Flutes({color}) {
-    let {octaveCalc,left: position} = useContext(SharedPiano)
+    let {octaveCalc,left: position,flute} = useContext(SharedPiano)
     const octavesObj = octaveCalc(flute)
   
     return (

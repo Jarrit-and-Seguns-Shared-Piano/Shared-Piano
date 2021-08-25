@@ -1,7 +1,29 @@
 import { OverlayTrigger,Tooltip,FloatingLabel,Form} from 'react-bootstrap';
+import  { useContext } from "react"
+import SharedPiano from '../context/SharedPianoContext'
 
-function dropDown(prop) {
+function DropDown(prop) {
+  let {checkOctave,octave,setLeft} = useContext(SharedPiano) 
+  const chkObj = checkOctave()
     function changeInst(event) {
+      const min = Math.min(chkObj[event.target.value],octave)
+          if(min === 1) {
+            setLeft('43%')
+        }else if(min === 2 ) {
+            setLeft('37%')
+        }else if(min === 3 ) {
+            setLeft('30%')
+        }else if(min === 4) {
+            setLeft('25%')
+        }else if(min === 5 ) {
+            setLeft('15%')
+        }else if(min === 6 ) {
+            setLeft('10%')
+        }else if(min === 7 ) {
+            setLeft('1%')
+        }else if(min === 8 ) {
+            setLeft('0.5%')
+        } 
        prop.change(event.target.value)
     }
     const renderTooltip = (props) => (
@@ -32,4 +54,4 @@ function dropDown(prop) {
     )
 }
 
-export default dropDown
+export default DropDown

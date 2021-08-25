@@ -38,7 +38,6 @@ function PianoPage(){
     location.state.name = "test"
     location.state.color = "#000000"
   }
-  console.log(location.state)
     let room = location.state.room
     let name = location.state.name
     let color = location.state.color    
@@ -125,7 +124,7 @@ function PianoPage(){
       </div>
     <div className="options">
       <Dropdown value={instrument} change={setInstrument}/>
-      <OctaveDrop style={{paddingBottom: "0px"}}value={octave} change={setOctave} />
+      <OctaveDrop style={{paddingBottom: "0px"}}value={octave} change={setOctave} instrument={instrument}/>
       <Link to={'/'}>
         <OverlayTrigger placement="top" delay={{ show: 250, hide: 400 }} overlay={renderTooltip}>
           <Button variant="danger" type='submit'>Leave Room</Button>

@@ -1,4 +1,3 @@
-import piano from '../samples/pianoSample'
 import  { useContext } from "react"
 import OctaveRender from './octaveRender';
 import SharedPiano from '../context/SharedPianoContext'
@@ -6,7 +5,7 @@ import SharedPiano from '../context/SharedPianoContext'
 
 
 function Piano({color}) {
-    let {octaveCalc,left: position} = useContext(SharedPiano) 
+    let {octaveCalc,left: position,piano} = useContext(SharedPiano) 
     const octavesObj = octaveCalc(piano)
     return (
         <div className="board">
