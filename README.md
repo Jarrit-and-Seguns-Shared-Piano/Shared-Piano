@@ -4,7 +4,7 @@
 
 ## Usage
   
-  After you clone the app navigate to the server and run `npm install` then run `npm start` this will start the back-end server. Navigate to the front-end and run the same command. There is a setupProxy file in the front-end folder for redirecting request to /socket.io
+  After you clone the app navigate to the server and run `npm install` then run `npm start` this will start the back-end server. Navigate to the front-end and run the same command. There is a setupProxy file in the front-end folder for redirecting request from /socket.io to the back-end server
 
 ### [Case Study](https://jarritalicea.medium.com/keyboard-hero-f6a66bb4c1e6)
 
