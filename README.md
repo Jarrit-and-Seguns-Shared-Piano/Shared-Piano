@@ -14,9 +14,9 @@ Included instruments:
 - Violin
 - Xylophone
 
-[FreeSound](https://freesound.org)
-[Karoryfer Samples](https://www.karoryfer.com/karoryfer-samples)
-[Versilstudios](http://vis.versilstudios.net/vsco-community.html)
-[Theremin Music](http://theremin.music.uiowa.edu/)
+- [FreeSound](https://freesound.org)
+- [Karoryfer Samples](https://www.karoryfer.com/karoryfer-samples)
+- [Versilstudios](http://vis.versilstudios.net/vsco-community.html)
+- [Theremin Music](http://theremin.music.uiowa.edu/)
 
-### [Case Study]https://jarritalicea.medium.com/keyboard-hero-f6a66bb4c1e6)
+### [Case Study](https://jarritalicea.medium.com/keyboard-hero-f6a66bb4c1e6)
