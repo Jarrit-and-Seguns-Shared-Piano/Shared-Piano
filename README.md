@@ -1,28 +1,22 @@
 # Keyboard Hero
-bass        - Karoryfer
 
-bassoon     - VSO2
-cello       - Freesound - 12408__flcellogrl__real-cello-notes
-contrabass  - VSO2
-flute       - VSO2
-french horn - VSO2
-guitar ac   - Iowa
-guitar el   - Karoryfer
-guitar ny   - Freesound - 11573__quartertone__classicalguitar-multisampled
-harmonium   - Freesound - 330410__donyaquick__harmonium-samples-all-keys-and-drones
-harp        - VSO2
-organ       - VSO2
-piano       - VSO2
-sax         - Karoryfer
-trombone    - VSO2
-trumpet     - VSO2
-tuba        - VSO2
-violin      - VSO2
-xylophone   - VSO2
+  [Keyboard Hero](https://shared-piano-app.herokuapp.com/) is an online collaborative music player designed to be enjoyed by one or multiple users. It offers a range of musical instruments, multiple key configurations, and is a great way for beginners to learn.
 
+## About the samples
 
-https://freesound.org
-https://www.karoryfer.com/karoryfer-samples
-http://vis.versilstudios.net/vsco-community.html
-http://theremin.music.uiowa.edu/
+Included instruments:
 
+- DrumMachine
+- Flute
+- GuitarAcoustic
+- Organ
+- Piano
+- Violin
+- Xylophone
+
+[FreeSound](https://freesound.org)
+[Karoryfer Samples](https://www.karoryfer.com/karoryfer-samples)
+[Versilstudios](http://vis.versilstudios.net/vsco-community.html)
+[Theremin Music](http://theremin.music.uiowa.edu/)
+
+### [Case Study]https://jarritalicea.medium.com/keyboard-hero-f6a66bb4c1e6)
