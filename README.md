@@ -29,4 +29,4 @@ Sample Links:
 - [Versilstudios](http://vis.versilstudios.net/vsco-community.html)
 - [Theremin Music](http://theremin.music.uiowa.edu/)
 
-Samples: [CC-by 3.0](https://creativecommons.org/licenses/by/3.0/)
+[CC-by 3.0](https://creativecommons.org/licenses/by/3.0/)
