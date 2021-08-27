@@ -5,7 +5,7 @@ module.exports = function(app) {
   app.use(
     '/socket.io',
     createProxyMiddleware({
-      target: 'https://shared-piano-backend.herokuapp.com',
+      target: 'http://localhost:8000',
       changeOrigin: true,
     })
   );
